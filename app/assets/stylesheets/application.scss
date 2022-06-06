@@ -1,0 +1,57 @@
+$pc: 1024px; // PC
+$tab: 680px; // タブレット
+$sp: 480px;  // スマホ
+
+// 全体の調整
+body {
+    margin: 0;
+    padding: 0;
+    font-weight: 500;
+    line-height: 1.85;
+    letter-spacing: 0.05em;
+    background: #f3f3f3;
+}
+
+// ナビゲーション位置固定
+.nav_fix {
+    position: fixed;
+    z-index: 10;
+    top: 55px;
+    left: 15%;
+    width: 20.4vw;
+
+    // ナビゲーションリンクを画面から消す
+    @media (max-width: ($pc)) {
+      display: none;
+  }
+}
+
+.main_nav {
+    font-size: 2.4rem;
+    font-weight: 600;
+    margin: 70px 0;
+
+    & li {
+      list-style: none;
+    }
+}
+
+.nav_link {
+  text-decoration: none;
+}
+
+
+// main要素のレスポンシブ
+main {
+    width: 67.32vw;
+    margin-left: 30%;
+    margin-top: 20px;
+    position: relative;
+
+    @media (max-width: ($pc)) {
+      width: 100%;
+      margin-left: 0;
+      margin-top: 100px;
+  }
+}
+

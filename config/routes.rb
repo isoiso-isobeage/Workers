@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  devise_for :users
+  devise_for :users, skip: [:passwords]
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
   #ホーム関連
@@ -11,9 +11,8 @@ Rails.application.routes.draw do
   resources :users, only: [:show,:edit,:update] do
 
     # フォロー関係
-    resource :relationships, only: [:create,:destroy]
-    get 'followings' => 'relationships#followings', as: 'followings'
-    get 'followers' => 'relationships#followers', as: 'followers'
+    resource :relationships, only: [:index, :create,:destroy]
+    get 'follows' => 'relationships#index', as: 'follows'
   end
 
   #ユーザー検索関係

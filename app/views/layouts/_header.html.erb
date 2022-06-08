@@ -3,12 +3,23 @@
   <div class="nav_fix">
     <div class="header_inner">
       <nav class="global_nav_pc">
+
         <ul class="main_nav">
-          <li><%=link_to 'HOME', '/', class: "nav-link" %></li>
-          <li><%=link_to 'ABOUT', home_about_path, class: "nav-link" %></li>
-          <li><%=link_to 'SIGN UP', new_user_registration_path, class: "nav-link" %></li>
-          <li><%=link_to 'LOG IN', new_user_session_path, class: "nav-link" %></li>
+          <% if user_signed_in? %>
+            <li><%=link_to 'Profile', user_path(current_user), class: "nav-link" %></li>
+            <li><%=link_to '通知', notifications_path, class: "nav-link" %></li>
+            <li><%=link_to '現場', sites_path, class: "nav-link" %></li>
+            <li><%=link_to 'ユーザー検索', search_path, class: "nav-link" %></li>
+            <li><%=link_to 'Follow', user_follows_path(current_user), class: "nav-link" %></li>
+            <li><%=link_to 'Log Out', destroy_user_session_path, method: :delete, class: "nav-link" %></li>
+          <%else%>
+            <li><%=link_to 'Home', '/', class: "nav-link" %></li>
+            <li><%=link_to 'About', home_about_path, class: "nav-link" %></li>
+            <li><%=link_to 'Sign Up', new_user_registration_path, class: "nav-link" %></li>
+            <li><%=link_to 'Log In', new_user_session_path, class: "nav-link" %></li>
+          <%end%>
         </ul>
+
       </nav>
     </div>
   </div>

@@ -1,0 +1,47 @@
+<div class="user_page">
+
+  <div class="user_content">
+
+    <!--ユーザー画像-->
+    <div class="image_area">
+      <%=image_tag user.get_profile_image, size: '200x200' , class: 'profile_image' %>
+    </div>
+
+　　<!--ユーザー名と企業名-->
+    <div class="profile_area">
+      <h1>
+        <%=user.get_full_name(user) %>
+      </h1>
+      <p><%=user.company_name %></p>
+    </div>
+
+  </div>
+
+  <!--ユーザーの電話番号とメールアドレス-->
+  <%unless current_user.id != user.id %>
+    <div class="pesonal_information_area">
+      <p>
+        TEL: <%=user.phone_number %>
+      </p>
+
+      <p>
+        Email: <%=user.email %>
+      <p>
+    </div>
+  <%end%>
+
+  <%if current_user.id == user.id %>
+    <div class="user_btn_area">
+      <%=link_to '編集する', edit_user_path(user.id), class: 'btn btn-success btn-lg'%>
+    </div>
+  <%elsif current_user.following?(user)%>
+    <div class="user_btn_area">
+      <%=link_to 'フォロー外す', user_relationships_path(user.id), method: :delete, class: 'btn btn-light btn-lg' %>
+    </div>
+  <%else%>
+    <div class="user_btn_area">
+      <%=link_to 'フォローする', user_relationships_path(user.id), method: :post, class: 'btn btn-light btn-lg' %>
+    </div>
+  <%end%>
+
+</div>

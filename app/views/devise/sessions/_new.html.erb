@@ -1,0 +1,37 @@
+<%= render "devise/shared/error_messages", resource: resource %>
+<div class="log_in_form">
+  <div class="log_in_content">
+    <h2>ログイン</h2>
+
+    <!--入力フォーム-->
+    <%=form_with model: user, url: user_session_path, local: true, method: :post do |f| %>
+
+    <table class="form_item">
+      <tbody>
+
+        <tr>
+          <td>
+            <%= f.label :email,"メールアドレス" %><br>
+            <%= f.email_field :email, placeholder: "例）yamada@yama2.co.jp", autofocus: true, class: 'form_field_long' %>
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <%= f.label :password,"パスワード(6文字以内)" %><br>
+            <%= f.password_field :password, autocomplete: 'off', class: 'form_field_long' %>
+          </td>
+        </tr>
+
+      </tbody>
+    </table>
+    <div class='text-center'>
+      <%= f.submit "ログイン", class: "btn btn-success"%>
+    </div>
+    <%end%>
+
+    ユーザー登録がお済みでない方は<%= render "devise/shared/links" %>から
+
+  </div>
+
+</div>

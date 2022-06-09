@@ -1,6 +1,7 @@
-<div class="new_site_page">
-  <div class="new_site_form">
-    <h2>現場作成</h2>
+<%= render "devise/shared/error_messages", resource: resource %>
+<div class="log_in_form">
+  <div class="log_in_content">
+    <h2>ログイン</h2>
 
     <!--入力フォーム-->
     <%=form_with model: user, url: user_session_path, local: true, method: :post do |f| %>
@@ -28,6 +29,8 @@
       <%= f.submit "ログイン", class: "btn btn-success"%>
     </div>
     <%end%>
+
+    ユーザー登録がお済みでない方は<%= render "devise/shared/links" %>から
 
   </div>
 

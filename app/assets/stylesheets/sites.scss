@@ -1,3 +1,12 @@
 // Place all the styles related to the sites controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+.new_site_page {
+  height :100vh;
+
+  h2 {
+    padding-top: 10%;
+    text-align: center;
+  }
+}

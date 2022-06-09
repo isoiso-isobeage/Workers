@@ -3,8 +3,18 @@
     text-align: center;
 }
 
-.form_item {
+.form_items {
     margin: auto;
+}
+
+.form_item {
+    position: relative;
+}
+
+.label {
+    position: absolute;
+    top: 0;
+    left: 0;
 }
 
 .form_field {
@@ -13,6 +23,8 @@
     padding: 5px 5px;
     margin-right: 15px;
     margin-bottom: 30px;
+    border:none;
+    border-bottom:1px solid #757575;
 }
 
 .form_field_long {
@@ -20,5 +32,8 @@
     width: 430px;
     padding: 5px 5px;
     margin-bottom: 20px;
+    border:none;
+    border-bottom:1px solid #757575;
 }
 
+input:focus     { outline:none; }

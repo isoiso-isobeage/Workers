@@ -1,0 +1,50 @@
+// application.scssを参照
+@import "./application";
+// タブメニューのレイアウト
+.tab-menu {
+  display: flex;
+  padding: 0;
+  margin: 0 auto;
+
+  li {
+    list-style-type: none;
+    width: 100%;
+
+
+    a {
+      color: rgba(0,0,0,0.8);
+      text-decoration: none;
+      display: block;
+      padding: 40px 20px;
+      text-align: center;
+      border-bottom: 1px solid $select-color;
+
+      &:hover {
+        background: $select-color;
+      }
+    }
+  }
+}
+
+// 　タブメニュー表示
+#active {
+  color: #000;
+  border-bottom: 5px solid blue !important;
+  font-weight: bold;
+}
+
+
+// タブコンテンツ全体の調整
+.tab-contents {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 auto;
+
+  .tab {
+    width: 100%;
+    margin: 0;
+    background: #fff;
+    border-top: none;
+  }
+
+}

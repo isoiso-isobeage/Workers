@@ -1,0 +1,14 @@
+<% followings.each do |user| %>
+  <%=link_to user_path(user), class: 'follow_user' do%>
+      <div>
+        <%= image_tag user.get_profile_image, class: 'follow_profile_image' %>
+      </div>
+      <div class="follow_user_names">
+        <h2><%= user.get_full_name(user) %></h2>
+        <p><%= user.company_name %></p>
+      </div>
+
+  <%end%>
+<%end%>
+
+

@@ -19,6 +19,7 @@
 $pc: 1024px; // PC
 $tab: 680px; // タブレット
 $sp: 480px; // スマホ
+$select-color: rgba(192,192,192,0.2);//選択時の背景色
 
 // 全体の調整
 *{
@@ -82,7 +83,8 @@ main {
   height: 100vh;
   width: 1000px;
   margin: 0 30%;
-  border-left: solid 2px #C0C0C0;
+  border-left: solid 2px $select-color;
+  border-right: solid 2px $select-color;
   position: relative;
   background : white;
 

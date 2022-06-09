@@ -1,21 +1,21 @@
 <div class="follow_page">
 
   <ul class="tab-menu">
-    <li><%=link_to '自現場', "#tab1", id: 'active' %></li>
-    <li><%=link_to '参加現場', "#tab2", id: '' %></li>
+    <li><%=link_to 'フォロー中', "#tab1", id: 'active' %></li>
+    <li><%=link_to 'フォロワー', "#tab2", id: '' %></li>
   </ul>
 
   <div class="tab-content">
-
     <div id="tab1" class="tab">
-      自現場
+      <%= render 'followings', followings: followings %>
     </div>
 
     <div id="tab2" class="tab">
-      参加現場
+      <%= render 'followers', followers: followers %>
     </div>
 
   </div>
+
 </div>
 
 <!--JavaScript読み込み-->

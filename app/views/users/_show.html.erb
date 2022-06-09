@@ -18,7 +18,7 @@
   </div>
 
   <!--ユーザーの電話番号とメールアドレス-->
-  <%unless current_user.id != user.id %>
+  <% if current_user == user || current_user.following?(user) && user.following?(current_user) %>
     <div class="pesonal_information_area">
       <p>
         TEL: <%=user.phone_number %>

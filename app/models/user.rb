@@ -12,6 +12,10 @@ class User < ApplicationRecord
   has_many :followings, through: :relationships, source: :followed
   has_many :followers, through: :reverse_of_relationships, source: :follower
 
+  # 現場関係
+  has_many :sites, dependent: :destroy
+  has_many :join_sites, through: :site_users, source: :site_id
+
 
   # フォローする
   def follow(user_id)
@@ -26,6 +30,12 @@ class User < ApplicationRecord
   # フォローしているか
   def following?(user)
     followings.include?(user)
+  end
+
+  # 相互フォロワーを返す
+  def mutual_follow_users(user)
+    mutual_follow_users = user.followings & user.followers
+    return mutual_follow_users
   end
 
   def get_profile_image

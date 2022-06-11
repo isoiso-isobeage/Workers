@@ -2,35 +2,13 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
-// application.scssを参照
-@import "./application";
-
 // ページ全体
 .follow_page {
   width: 100%;
   margin: 0 auto;
 }
 
-// コンテンツ中身の調整
-.follow_user {
-  width: 100%;
-  padding: 20px 100px;
-  display: flex;
-  text-decoration: none;
-  &:hover {
-    background: $select-color;
-  }
-}
 
-.follow_profile_image {
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-}
-
-.follow_user_names {
-  padding: 20px;
-}
 
 
 

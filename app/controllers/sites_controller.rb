@@ -17,7 +17,7 @@ class SitesController < ApplicationController
 
 
   def index
-    @my_sites = Site.where(user_id: current_user.id)
+    @my_sites = current_user.sites
     @join_sites = Site.all
   end
 
@@ -28,14 +28,24 @@ class SitesController < ApplicationController
 
 
   def edit
+    @site = Site.find(params[:id])
   end
 
 
   def update
+    @site = Site.find(params[:id])
+    if @site.update(site_params)
+      redirect_to site_path(@site)
+    else
+      render 'edit'
+    end
   end
 
 
   def destroy
+    @site = Site.find_by(params[:id])
+    @site.destroy
+    redirect_to user_path(current_user)
   end
 
   private

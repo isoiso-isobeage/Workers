@@ -80,7 +80,7 @@ input:focus     { outline:none; }
 
 // main要素のレスポンシブ
 main {
-  height: 100vh;
+  min-height: 100vh;
   width: 60%;
   margin: 0 30%;
   border-left: solid 2px $select-color;

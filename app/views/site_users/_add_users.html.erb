@@ -1,4 +1,4 @@
-<% followers.each do |user| %>
+<% add_users.each do |user| %>
   <%=link_to user_path(user), class: 'tab_content' do%>
 
       <div>
@@ -8,6 +8,8 @@
         <h2><%= user.get_full_name(user) %></h2>
         <p><%= user.company_name %></p>
       </div>
+      <%=form_with model: site_users, url: site_users_path, local: true, method: :post do |f| %>
+      <%end%>
 
   <%end%>
 <%end%>

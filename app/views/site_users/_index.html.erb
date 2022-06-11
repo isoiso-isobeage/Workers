@@ -1,21 +1,21 @@
 <div class="follow_page">
 
   <ul class="tab-menu">
-    <li><%=link_to '自現場', "#tab1", id: 'active' %></li>
-    <li><%=link_to '参加現場', "#tab2", id: '' %></li>
+    <li><%=link_to '現場ユーザー', "#tab1", id: 'active' %></li>
+    <li><%=link_to 'ユーザー追加', "#tab2", id: '' %></li>
   </ul>
 
   <div class="tab-contents">
-
     <div id="tab1" class="tab">
-      <%= render 'sites/my_sites', my_sites: @my_sites %>
+      現場ユーザー一覧
     </div>
 
     <div id="tab2" class="tab">
-      参加現場
+      <%= render 'add_users', add_users: add_users, site_users: site_users %>
     </div>
 
   </div>
+
 </div>
 
 <!--JavaScript読み込み-->

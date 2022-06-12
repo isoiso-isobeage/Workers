@@ -9,9 +9,12 @@ class Site < ApplicationRecord
   has_many :users, through: :site_users
 
   # 現場に参加しているか
-  def user?(users)
-    users.each do |user|
-      !users.include?(user)
-    end
-  end
+  # def join_user?(mutual_follow_users, site_users)
+  #   mutual_follow_users.each do |user|
+  #     # byebug
+  #     users = site_users.where.not(id: user.id)
+  #     return users
+  #   end
+  # end
+
 end

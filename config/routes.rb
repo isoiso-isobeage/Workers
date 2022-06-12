@@ -22,8 +22,9 @@ Rails.application.routes.draw do
   resources :sites do
 
     # 現場関係関連
-    resources :site_users, only: [:index,:create,:destroy],as: 'users'
+    resources :site_users, only: [:index,:create],as: 'users'
     get 'add' => 'site_users#add', as: 'add_users'
+    delete 'destroy/:user_id' => 'site_users#site_user_destroy',as: 'user_destroy'
 
     # 作業関連
     resources :works, except: [:index]

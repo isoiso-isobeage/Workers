@@ -14,7 +14,7 @@ class User < ApplicationRecord
 
   # 現場関係
   has_many :sites, dependent: :destroy
-  has_many :join_sites, through: :site_users, source: :site_id
+  has_many :join_sites, through: :site_users
 
 
   # フォローする

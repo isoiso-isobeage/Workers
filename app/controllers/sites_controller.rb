@@ -18,12 +18,13 @@ class SitesController < ApplicationController
 
   def index
     @my_sites = current_user.sites
-    @join_sites = Site.all
+    @join_sites = current_user.join_sites
   end
 
 
   def show
     @site = Site.find(params[:id])
+    @works = @site.works
   end
 
 

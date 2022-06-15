@@ -1,0 +1,9 @@
+
+<div id='calendar'></div>
+
+<!--authenticity_token.valueを取得するために用意-->
+<%=form_with model: @work, id: "event" %>
+
+<%= javascript_pack_tag 'calendar' %>
+
+

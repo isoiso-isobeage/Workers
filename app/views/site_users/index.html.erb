@@ -7,11 +7,11 @@
 
   <div class="tab-contents">
     <div id="tab1" class="tab">
-      <%= render 'site_users', site_users: site_users, site_user: site_user, site: site %>
+      <%= render 'site_users', site_users: @site_users, site_user: @site_user, site: @site %>
     </div>
 
     <div id="tab2" class="tab">
-      <%= render 'add_users', add_users: add_users, site_user: site_user, site: site %>
+      <%= render 'add_users', add_users: @add_users, site_user: @site_user, site: @site %>
     </div>
 
   </div>

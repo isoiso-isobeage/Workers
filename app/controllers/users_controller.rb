@@ -22,6 +22,7 @@ class UsersController < ApplicationController
 
 
   def search
+    @users = User.all
     if @user = User.find_by(email: params[:search_email])
       render 'search'
     else

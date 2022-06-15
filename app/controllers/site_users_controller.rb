@@ -18,11 +18,11 @@ class SiteUsersController < ApplicationController
   end
 
   def create
-    @site_user = SiteUser.new(site_user_params)
-    if @site_user.save
-      redirect_to '/'
+    site_user = SiteUser.new(site_user_params)
+    if site_user.save
+      redirect_to request.referer
     else
-      redirect_to '/'
+      redirect_to request.referer
     end
   end
 
@@ -31,8 +31,12 @@ class SiteUsersController < ApplicationController
     @site = Site.find(params[:site_id])
     @site_users = @site.users
     SiteUser.find_by(site_id: @site, user_id: params[:user_id]).destroy
-    redirect_to '/'
+    redirect_to request.referer
 
+  end
+
+  def show
+    @user = User.find(params[:id])
   end
 
   private

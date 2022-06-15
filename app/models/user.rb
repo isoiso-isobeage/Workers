@@ -12,9 +12,13 @@ class User < ApplicationRecord
   has_many :followings, through: :relationships, source: :followed
   has_many :followers, through: :reverse_of_relationships, source: :follower
 
-  # 現場関係
+  # 自分が作った現場関係
   has_many :sites, dependent: :destroy
-  has_many :join_sites, through: :site_users
+
+  # 参加している現場
+  has_many :site_users, dependent: :destroy
+  has_many :join_sites, through: :site_users, source: :site
+
 
 
   # フォローする

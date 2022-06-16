@@ -2,7 +2,7 @@
 
 // カレンダー調整
 #calendar {
-  padding-top: 10%;
+  padding-top: 6%;
   margin: 0 auto;
   min-height: 100vh;
   height: auto ;
@@ -14,9 +14,15 @@
     text-decoration: none;
   }
 
-  .fc-daygrid-event {
-    background: blue;
+  // イベント文字の調整
+  .fc-daygrid-dot-event {
+    background: green;
     color : white;
+    text-align: center;
+  }
+
+  .fc-event-time {
+    display: none;
   }
 
   // 予定の・を非表示

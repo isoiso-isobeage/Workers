@@ -1,0 +1,23 @@
+<%=form_with model: @personnel, url: site_work_personnels_path(@site, @work), local: true, method: :post do |f| %>
+  <div class="personnels_form_page">
+    <h2>予定人数作成</h2>
+    <div class="personnels_table">
+      <table class="table table-striped">
+        <thead>
+          <th>会社名</th>
+          <th>ユーザー名</th>
+          <th>予定人数</th>
+        </thead>
+        <tbody>
+           <% @site_users.each do |user| %>
+            <tr>
+              <td><%=user.company_name%></td>
+              <td><%=user.get_full_name(user)%></td>
+              <td><%=f.number_field :count, min: 0, class: 'number_field' %>人</td>
+            </tr>
+          <%end%>
+        </tbody>
+      </table>
+    </div>
+  </div>
+<%end%>

@@ -17,7 +17,7 @@
 //
 
 $pc: 1024px; // PC
-$tab: 680px; // タブレット
+$tab: 690px; // タブレット
 $sp: 480px; // スマホ
 $select-color: rgba(192,192,192,0.2);//選択時の背景色
 
@@ -40,6 +40,10 @@ input:focus     { outline:none; }
   top: 55px;
   left: 15%;
   width: 220px;
+
+  @media (max-width: (1430px)) {
+    left: 10%;
+  }
 
   // ナビゲーションリンクを画面から消す
   @media (max-width: ($pc)) {

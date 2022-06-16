@@ -32,13 +32,29 @@
 }
 
 .form_field_big {
-  background : white;
-  height: 200px;
-  width: 530px;
-  padding: 5px 5px;
-  margin-bottom: 20px;
-  border:1px solid gray;
-  border-radius: 30px;
+    background : white;
+    height: 200px;
+    width: 530px;
+    padding: 5px 5px;
+    margin-bottom: 20px;
+    border:1px solid gray;
+    border-radius: 30px;
+}
+
+.time_form_field {
+    background : white;
+    width: 85px;
+    padding: 5px 5px;
+    margin-right: 5px;
+    margin-bottom: 30px;
+    border:1px solid gray;
+    border-radius: 30px;
+}
+
+.number_field {
+    width: 50px;
+    border:1px solid gray;
+    border-radius: 5px;
 }
 
 input:focus     { outline:none; }

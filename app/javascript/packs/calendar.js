@@ -6,11 +6,8 @@ import interactionPlugin from '@fullcalendar/interaction';
 
 $(document).ready(function() {
   const calendarEl = document.getElementById('calendar');
-  console.log(calendarEl)
-      console.log("aaa");
 
   if (calendarEl != null) {
-    console.log("bbb");
     const calendar = new Calendar(calendarEl, {
     plugins: [ dayGridPlugin, timeGridPlugin, listPlugin, interactionPlugin ],
 
@@ -121,4 +118,3 @@ $(document).ready(function() {
   }
   });
 
-  

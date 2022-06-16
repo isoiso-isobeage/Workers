@@ -1,20 +1,22 @@
-<% site_users.each do |site_user| %>
-  <%=link_to user_path(site_user), class: 'tab_content' do%>
+<% site_users.each do |user| %>
+  <%=link_to user_path(user), class: 'tab_content' do%>
 
-      <div>
-        <%= image_tag site_user.get_profile_image, class: 'tab_user_profile_image' %>
-      </div>
+    <div>
+      <%= image_tag user.get_profile_image, class: 'tab_user_profile_image' %>
+    </div>
 
-      <div class="tab_content_names">
-        <h2><%= site_user.get_full_name(site_user) %></h2>
-        <p><%= site_user.company_name %></p>
-      </div>
+    <div class="tab_content_names">
+      <h2><%= user.get_full_name(user) %></h2>
+      <p><%= user.company_name %></p>
+    </div>
+    <!--削除用フォーム-->
+    <div>
+      <%=form_with model: site_user, url: site_user_destroy_path(site, user), local: true, method: :delete do |f| %>
+        <%= f.submit "削除する", class: 'btn btn-success tab_btn'%>
+      <%end%>
+    </div>
 
   <%end%>
-  <!--追加用フォーム-->
-  <div>
-    <%=link_to '削除する', site_user_destroy_path(site, site_user), method: :delete, class: 'btn btn-success' %>
-  </div>
 
 <%end%>
 

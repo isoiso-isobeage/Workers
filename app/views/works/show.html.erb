@@ -1,2 +1,33 @@
-<%=@work.start_date %><br>
-<%=@work.end_date %>
+<div class="work_show_page">
+  <h2><%=@work.name %></h2>
+
+  <%unless @work.content.blank?%>
+  <div class="content_area">
+    <h5>作業内容</h5>
+    <p><%=@work.content%></p>
+  </div>
+  <%end%>
+
+  <div class="time_area">
+    <h5>日時</h5>
+    <p><%=l @work.start_date%><span>~</span><%=l @work.start_date%></p>
+  </div>
+
+  <table class="table table-striped">
+    <thead>
+      <th>会社名</th>
+      <th>ユーザー名</th>
+      <th>予定人数</th>
+    </thead>
+    <tbody>
+       <% @personnels.each do |personnel| %>
+        <tr>
+          <td><%=personnel.company_name%></td>
+          <td><%=personnel.user.get_full_name(user)%></td>
+          <td><%=personnel.count %>人</td>
+        </tr>
+      <%end%>
+    </tbody>
+      </table>
+<%=link_to '登録' %>
+</div>

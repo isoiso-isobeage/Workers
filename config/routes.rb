@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  get 'personnels/new'
   devise_for :users, skip: [:passwords]
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
@@ -23,11 +24,13 @@ Rails.application.routes.draw do
 
     # 現場関係関連
     resources :site_users, only: [:index,:create],as: 'users'
-    get 'add' => 'site_users#add', as: 'add_users'
     delete 'destroy/:user_id' => 'site_users#site_user_destroy',as: 'user_destroy'
 
     # 作業関連
-    resources :works
+    resources :works do
+      # 予定人数関連
+      resources :personnels, only: [:new,:create,:update]
+    end
   end
 
   resources :notifications, only: [:index]

@@ -17,7 +17,10 @@ class WorksController < ApplicationController
     if !duplicate_company? && work.save
       redirect_to site_work_path(site, work)
     else
+      @work = Work.new
+      @work.personnels.build
       @site = Site.find(params[:site_id])
+      @site_users = @site.users
       render 'new'
     end
   end
@@ -42,7 +45,18 @@ class WorksController < ApplicationController
   end
 
 
+  # ドラッグドロップ用のアップデートアクション
   def update
+    work = Work.find(params[:id])
+    site = work.site
+    # 現場を作成したユーザーのみ変更可能
+    if site.user_id == current_user.id
+      work.update(start_date: params[:start_date], end_date: params[:end_date])
+    end
+  end
+
+
+  def update_all
     work = Work.find(params[:id])
     site = Site.find(work.site_id)
     # 現場を作成したユーザーのみ変更可能
@@ -56,8 +70,12 @@ class WorksController < ApplicationController
     end
   end
 
+
   def destroy
   end
+
+
+  private
 
   def work_params
     params.require(:work).permit(

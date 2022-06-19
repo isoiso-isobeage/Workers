@@ -6,7 +6,10 @@ ruby '2.6.3'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 6.1.4'
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3', '~> 1.4'
+gem 'dotenv-rails'
+group :production do
+  gem 'mysql2'
+end
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets
@@ -31,6 +34,8 @@ gem 'bootsnap', '>= 1.4.4', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'sqlite3', '~> 1.4'
+
 end
 
 group :development do
@@ -59,7 +64,4 @@ gem 'momentjs-rails'
 gem 'kaminari','~> 1.2.1'
 gem "cocoon"
 
-gem 'dotenv-rails'
-group :production do
-  gem 'mysql2'
-end
+

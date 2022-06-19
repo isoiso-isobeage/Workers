@@ -3,7 +3,9 @@ class WorksController < ApplicationController
 
   def new
     @work = Work.new
+    @work.personnels.build
     @site = Site.find(params[:site_id])
+    @site_users = @site.users
   end
 
 
@@ -12,8 +14,8 @@ class WorksController < ApplicationController
     work = Work.new(work_params)
     work.site_id = site.id
 
-    if work.save
-      redirect_to new_site_work_personnel_path(site, work)
+    if !duplicate_company? && work.save
+      redirect_to site_work_path(site, work)
     else
       @site = Site.find(params[:site_id])
       render 'new'
@@ -34,6 +36,9 @@ class WorksController < ApplicationController
 
 
   def edit
+    @site = Site.find(params[:site_id])
+    @work = Work.find(params[:id])
+    @site_users = @site.users
   end
 
 
@@ -41,13 +46,13 @@ class WorksController < ApplicationController
     work = Work.find(params[:id])
     site = Site.find(work.site_id)
     # 現場を作成したユーザーのみ変更可能
-    if site.user_id == current_user.id
-      if work.update(start_date: params[:start_date], end_date: params[:end_date])
-         redirect_to site_works_path(site)
-      end
+    if work.update(work_params) && site.user_id == current_user.id && !duplicate_company?
+      redirect_to site_work_path(site, work)
     else
-      @works = site.works
-      render 'index'
+      @site = Site.find(params[:site_id])
+      @work = Work.find(params[:id])
+      @site_users = @site.users
+      render 'edit'
     end
   end
 
@@ -57,8 +62,15 @@ class WorksController < ApplicationController
   def work_params
     params.require(:work).permit(
       :site_id, :name, :content, :start_date, :end_date,
-      personnels_attributes: [:user_id, :company_name, :count]
-      )
+      personnels_attributes: [:id, :work_id, :company_name, :count, :_destroy])
+  end
+
+  # 送られてきた会社名が同じかどうか
+  def duplicate_company?
+    work_params[:personnels_attributes].to_h
+                                       .map {|k, hash| hash[:company_name]}
+                                       .group_by {|e|e}.select {|k,v| v.size > 1}
+                                       .any? {|k, v|v.size>1}
   end
 
 end

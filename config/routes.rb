@@ -27,10 +27,7 @@ Rails.application.routes.draw do
     delete 'destroy/:user_id' => 'site_users#site_user_destroy',as: 'user_destroy'
 
     # 作業関連
-    resources :works do
-      # 予定人数関連
-      resources :personnels, only: [:new,:create,:update]
-    end
+    resources :works
   end
 
   resources :notifications, only: [:index]

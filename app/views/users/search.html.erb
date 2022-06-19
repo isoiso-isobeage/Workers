@@ -9,28 +9,3 @@
 <%unless @user.blank?%>
   <%= render 'users/show', user: @user %>
 <%end%>
-
-<% @users.each do |user| %>
-  <%=link_to user_path(user), class: 'tab_content' do%>
-
-      <div>
-        <%= image_tag user.get_profile_image, class: 'tab_user_profile_image' %>
-      </div>
-      <div class="tab_content_names">
-        <h2><%= user.get_full_name(user) %></h2>
-        <p><%= user.company_name %></p>
-      </div>
-
-      <%if current_user.following?(user)%>
-    <div class="user_btn_area">
-      <%=link_to 'フォロー外す', user_relationships_path(user.id), method: :delete, class: 'btn btn-light btn-lg' %>
-    </div>
-  <%else%>
-    <div class="user_btn_area">
-      <%=link_to 'フォローする', user_relationships_path(user.id), method: :post, class: 'btn btn-light btn-lg' %>
-    </div>
-  <%end%>
-
-  <%end%>
-<%end%>
-

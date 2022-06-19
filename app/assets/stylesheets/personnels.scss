@@ -1,0 +1,19 @@
+// Place all the styles related to the personnels controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+.personnels_form_page h2 {
+  padding-top: 10%;
+  text-align: center;
+
+}
+
+.personnels_table {
+  width: 80%;
+  text-align: center;
+  margin: 0 auto;
+
+  td {
+    width: 30%;
+    padding-bottom: 50px;
+  }
+}

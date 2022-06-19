@@ -1,0 +1,80 @@
+<%= render "devise/shared/error_messages", resource: resource %>
+
+<div class="sign_up_form">
+
+  <h2>新規登録</h2>
+
+  <!--入力フォーム-->
+  <%=form_with model: user, url: user_registration_path, local: true, method: :post do |f| %>
+
+  <table class="form_items">
+    <tbody>
+
+      <tr>
+        <td class="form_item">
+          <%= f.label :family_name,"性", class: 'label' %><br>
+          <%= f.text_field :family_name, placeholder: "山田", autofocus: true, class: 'form_field' %>
+        </td>
+        <td class="form_item">
+          <%= f.label :name,"名", class: 'label' %><br>
+          <%= f.text_field :name, placeholder: "太郎", autofocus: true, class: 'form_field' %>
+        </td>
+      </tr>
+
+      <tr>
+        <td class="form_item">
+          <%= f.label :kana_family_name,"セイ", class: 'label' %><br>
+          <%= f.text_field :kana_family_name, placeholder: "ヤマダ", autofocus: true, class: 'form_field' %>
+        </td>
+
+        <td class="form_item">
+          <%= f.label :kana_name,"メイ", class: 'label' %><br>
+          <%= f.text_field :kana_name, placeholder: "タロウ", autofocus: true, class: 'form_field' %>
+        </td>
+      </tr>
+
+      <tr>
+        <td colspan=2 class="form_item">
+          <%= f.label :email,"メールアドレス", class: 'label' %><br>
+          <%= f.email_field :email, placeholder: "例）yamada@yama2.co.jp", autofocus: true, class: 'form_field_long' %>
+        </td>
+      </tr>
+
+      <tr>
+        <td colspan=2 class="form_item">
+          <%= f.label :phone_number,"電話番号", class: 'label' %><br>
+          <%= f.text_field :phone_number, placeholder: "例）09012345678", autofocus: true, class: 'form_field_long' %>
+        </td>
+      </tr>
+
+      <tr>
+        <td colspan=2 class="form_item">
+          <%= f.label :company_name,"会社名", class: 'label' %><br>
+          <%= f.text_field :company_name, placeholder: "例）WORK株式会社", autofocus: true, class: 'form_field_long' %>
+        </td>
+      </tr>
+
+      <tr>
+        <td colspan=2 class="form_item">
+          <%= f.label :password,"パスワード(6文字以内)", class: 'label' %><br>
+          <%= f.password_field :password, autocomplete: 'off', class: 'form_field_long' %>
+        </td>
+      </tr>
+
+      <tr>
+        <td colspan=2 class="form_item">
+          <%= f.label :password_confirmatio,"パスワード(確認用)", class: 'label' %><br>
+          <%= f.password_field :password_confirmatio, autocomplete: 'off', class: 'form_field_long' %>
+        </td>
+      </tr>
+
+    </tbody>
+  </table>
+  <div class='text-center'>
+    <%= f.submit "新規登録", class: "btn btn-success"%>
+  </div>
+  <%end%>
+
+  ユーザー登録がお済みの方は<%= render "devise/shared/links" %>から
+</div>
+

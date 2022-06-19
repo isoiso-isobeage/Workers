@@ -1,0 +1,22 @@
+<div class="follow_page">
+
+  <ul class="tab-menu">
+    <li><%=link_to 'フォロー中', "#tab1", id: 'active' %></li>
+    <li><%=link_to 'フォロワー', "#tab2", id: '' %></li>
+  </ul>
+
+  <div class="tab-contents">
+    <div id="tab1" class="tab">
+      <%= render 'followings', followings: @followings %>
+    </div>
+
+    <div id="tab2" class="tab">
+      <%= render 'followers', followers: @followers %>
+    </div>
+
+  </div>
+
+</div>
+
+<!--JavaScript読み込み-->
+<%= javascript_pack_tag 'relationships/tab' %>

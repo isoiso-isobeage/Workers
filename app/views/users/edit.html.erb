@@ -1,0 +1,58 @@
+<%= render 'layouts/errors', obj: @user %>
+<div class="user_edit_page">
+  <div class="user_edit_content">
+    <%= form_with model: @user, url: user_path(@user), method: :patch do |f| %>
+      <table>
+        <tbody>
+
+          <tr>
+            <td>
+              <%= f.label :profile_image,"プロフィール画像" %><br>
+              <%= f.file_field :profile_image %>
+            </td>
+          </tr>
+
+          <tr>
+
+            <td>
+              <%= f.label :family_name,"性" %><br>
+              <%= f.text_field :family_name, placeholder: "山田", autofocus: true, class: 'form_field' %>
+            </td>
+            <td>
+              <%= f.label :name,"名" %><br>
+              <%= f.text_field :name, placeholder: "太郎", autofocus: true, class: 'form_field' %>
+            </td>
+          </tr>
+
+          <tr>
+            <td>
+              <%= f.label :kana_family_name,"セイ" %><br>
+              <%= f.text_field :kana_family_name, placeholder: "ヤマダ", autofocus: true, class: 'form_field' %>
+            </td>
+            <td>
+              <%= f.label :kana_name,"メイ" %><br>
+              <%= f.text_field :kana_name, placeholder: "タロウ", autofocus: true, class: 'form_field' %>
+            </td>
+          </tr>
+
+          <tr>
+            <td>
+              <%= f.label :phone_number,"電話番号" %><br>
+              <%= f.text_field :phone_number, placeholder: "例）09012345678", autofocus: true, class: 'form_field_long' %>
+            </td>
+          </tr>
+
+          <tr>
+            <td>
+              <%= f.label :company_name,"会社名" %><br>
+              <%= f.text_field :company_name, placeholder: "例）WORK株式会社", autofocus: true, class: 'form_field_long' %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div class='text-center'>
+        <%= f.submit "変更", class: "btn btn-success"%>
+      </div>
+    <%end%>
+  </div>
+</div>

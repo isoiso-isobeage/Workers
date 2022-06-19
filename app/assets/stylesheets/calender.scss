@@ -1,0 +1,71 @@
+@import "./application";
+
+// カレンダー調整
+#calendar {
+  padding-top: 6%;
+  margin: 0 auto;
+  min-height: 100vh;
+  height: auto ;
+  width: 80%;
+
+  // 各a要素の設定
+  a {
+    color: black;
+    text-decoration: none;
+  }
+
+  // イベント文字の調整
+  .fc-daygrid-dot-event {
+    background: green;
+    color : white;
+    text-align: center;
+  }
+
+  .fc-event-time {
+    display: none;
+  }
+
+  // 予定の・を非表示
+  .fc-daygrid-event-dot {
+    display: none;
+  }
+
+  .fc-event-title {
+    text-align: center;
+    @media (max-width: ($pc)) {
+      font-size: 5px;
+    }
+  }
+
+
+  @media (max-width: ($pc)) {
+    padding-top: 10%;
+    margin: 0 auto;
+    width: 90%;
+
+    // カレンダーの高さ
+    tbody  {
+      height : 400px;
+    }
+
+    // カレンダーのタイトル日付
+    h2 {
+      font-size: 15px;
+    }
+
+    // カレンダーの日付や曜日の文字
+    .fc-scrollgrid-sync-inner {
+      color: black;
+      font-size: 10px;
+    }
+
+
+    // 各ボタンを消す
+    .fc-toolbar-chunk button {
+      display: none;
+    }
+}
+
+}
+
+

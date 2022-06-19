@@ -1,0 +1,32 @@
+<header>
+  <!--ナビゲーション-->
+  <div class="nav_fix">
+    <div class="header_inner">
+      <nav class="global_nav_pc">
+
+        <ul class="main_nav">
+          <!--現場関連のナビゲーション-->
+          <%if user_signed_in? && !@site.blank?%>
+            <%= render 'layouts/site_header', site: @site %>
+          <!--ログイン時のナビゲーション-->
+          <%elsif user_signed_in?%>
+            <li><%=link_to 'Profile', user_path(current_user), class: "nav-link" %></li>
+            <li><%=link_to '現場作成', new_site_path, class: "nav-link" %></li>
+            <li><%=link_to '現場一覧', sites_path, class: "nav-link" %></li>
+            <li><%=link_to 'ユーザー検索', search_path, class: "nav-link" %></li>
+            <li><%=link_to 'Follow', user_follows_path(current_user), class: "nav-link"%></li>
+            <li><%=link_to '通知', notifications_path, class: "nav-link" %></li>
+            <li><%=link_to 'Log Out', destroy_user_session_path, method: :delete, class: "nav-link" %></li>
+          <%else%>
+          <!--ログイン前のナビゲーション-->
+            <li><%=link_to 'Home', '/', class: "nav-link" %></li>
+            <li><%=link_to 'About', home_about_path, class: "nav-link" %></li>
+            <li><%=link_to 'Sign Up', new_user_registration_path, class: "nav-link" %></li>
+            <li><%=link_to 'Log In', new_user_session_path, class: "nav-link" %></li>
+          <%end%>
+        </ul>
+
+      </nav>
+    </div>
+  </div>
+</header>

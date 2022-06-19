@@ -1,0 +1,105 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+//
+
+$pc: 1024px; // PC
+$tab: 690px; // タブレット
+$sp: 480px; // スマホ
+$select-color: rgba(192,192,192,0.2);//選択時の背景色
+
+// 全体の調整
+*{
+  font-family: Meiryo;
+  margin: 0;
+  padding: 0;
+  line-height: 1.85;
+  letter-spacing: 0.05em;
+}
+
+// フォームのアウトラインを削除
+input:focus     { outline:none; }
+
+// ナビゲーション位置固定
+.nav_fix {
+  position: fixed;
+  z-index: 10;
+  top: 55px;
+  left: 15%;
+  width: 220px;
+
+  @media (max-width: (1430px)) {
+    left: 10%;
+  }
+
+  // ナビゲーションリンクを画面から消す
+  @media (max-width: ($pc)) {
+    display: none;
+  }
+}
+
+// headerの文字サイズや太さ、位置を調整
+.main_nav  {
+  font-size: 25px;
+  font-weight: 400;
+  margin: 70px 0;
+
+  & li {
+    margin-bottom: 20px;
+    list-style: none;
+    }
+}
+
+// 検索フォーム位置調整
+.search_area {
+  padding-top: 30px;
+  text-align: center;
+}
+
+// 検索フォームサイズ
+.search_field {
+  font-size: 40px 20px;
+}
+// headerのリンク調整
+.nav_link {
+  padding: 0;
+  text-decoration: none;
+  border: none;
+  border-bottom:1px solid #757575;
+}
+
+
+// main要素のレスポンシブ
+main {
+  min-height: 100vh;
+  width: 60%;
+  margin: 0 30%;
+  border-left: solid 2px $select-color;
+  border-right: solid 2px $select-color;
+  position: relative;
+  background : white;
+
+  @media (max-width: ($pc)) {
+    width: 100%;
+    margin-left: 0;
+    margin-top: 100px;
+  }
+}
+
+section {
+  width: 800px;
+}
+

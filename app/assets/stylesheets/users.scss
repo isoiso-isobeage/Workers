@@ -1,0 +1,62 @@
+// Place all the styles related to the users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+@import "./application";
+
+// showページ関連
+.user_page {
+  height: 100vh;
+}
+
+.user_content {
+  padding: 150px 150px 0 180px;
+  height: 350px;
+  display: flex;
+
+  .profile_image {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+  }
+
+  .profile_area {
+    padding-top: 55px;
+    padding-left: 50px;
+  }
+
+  @media (max-width: ($tab)) {
+    height: 280px;
+    padding: 100px;
+    padding-bottom: 30px;
+
+    .profile_image {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+  }
+  }
+}
+
+
+
+
+
+.pesonal_information_area {
+  padding: 30px 150px 0 180px;
+
+  @media (max-width: ($tab)) {
+    padding: 30px 150px 0 180px;
+  }
+}
+
+.user_btn_area {
+  padding-top: 30px;
+  text-align: center;
+}
+
+
+// editページ関連
+.edit_user_page {
+  height: 100vh;
+}

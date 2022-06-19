@@ -1,0 +1,11 @@
+<div class="search_area">
+  <%=form_with url: search_path, local: true, method: :get do |f| %>
+    <%= f.label :search_email,"検索フォーム" %><br>
+    <%=f.email_field :search_email, :size =>"30", placeholder: "メールアドレスを入力してください", class: "search_field" %>
+    <%=f.submit '検索'%>
+  <%end%>
+</div>
+
+<%unless @user.blank?%>
+  <%= render 'users/show', user: @user %>
+<%end%>

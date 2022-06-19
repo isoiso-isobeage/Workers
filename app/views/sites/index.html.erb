@@ -1,0 +1,22 @@
+<div class="follow_page">
+
+  <ul class="tab-menu">
+    <li><%=link_to '自現場', "#tab1", id: 'active' %></li>
+    <li><%=link_to '参加現場', "#tab2", id: '' %></li>
+  </ul>
+
+  <div class="tab-contents">
+
+    <div id="tab1" class="tab">
+      <%= render 'sites/my_sites', my_sites: @my_sites %>
+    </div>
+
+    <div id="tab2" class="tab">
+      <%= render 'sites/join_sites', join_sites: @join_sites %>
+    </div>
+
+  </div>
+</div>
+
+<!--JavaScript読み込み-->
+<%= javascript_pack_tag 'relationships/tab' %>

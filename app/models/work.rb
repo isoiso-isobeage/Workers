@@ -8,7 +8,7 @@ class Work < ApplicationRecord
   # 現場
   belongs_to :site
   # 人数
-  has_many :personnels
+  has_many :personnels, dependent: :destroy
 
   accepts_nested_attributes_for :personnels, allow_destroy: true
 

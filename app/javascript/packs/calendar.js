@@ -103,6 +103,7 @@ $(document).ready(function() {
       console.log(start);
 
 
+
       $.ajax({
         type: 'patch',
         url: '/sites/' + site_id + '/works/' + id,

@@ -10,24 +10,30 @@
 
   <div class="time_area">
     <h5>日時</h5>
-    <p><%=l @work.start_date%><span>~</span><%=l @work.start_date%></p>
+    <p><%=l @work.start_date%><span>~</span><%=@work.end_date%></p>
   </div>
 
-  <table class="table table-striped">
-    <thead>
-      <th>会社名</th>
-      <th>ユーザー名</th>
-      <th>予定人数</th>
-    </thead>
-    <tbody>
-       <% @personnels.each do |personnel| %>
-        <tr>
-          <td><%=personnel.company_name%></td>
-          <td><%=personnel.user.get_full_name(user)%></td>
-          <td><%=personnel.count %>人</td>
-        </tr>
-      <%end%>
-    </tbody>
-      </table>
-<%=link_to '登録' %>
+  <%if @personnels.blank?%>
+    <h2>⚠️予定人数が設定されていません</h2>
+  <%else%>
+    <table class="table">
+      <thead class="table-dark">
+        <th>会社名</th>
+        <th>予定人数</th>
+      </thead>
+      <tbody>
+         <% @personnels.each do |personnel| %>
+          <tr>
+            <td><%=personnel.company_name%></td>
+            <td><%=personnel.count %>人</td>
+          </tr>
+        <%end%>
+      </tbody>
+    </table>
+  <%end%>
+  <div class="work_btn_area">
+    <div>
+      <%=link_to '作業内容を編集', edit_site_work_path(@site, @work)%>
+    </div>
+  </div>
 </div>

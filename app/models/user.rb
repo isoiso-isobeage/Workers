@@ -6,6 +6,13 @@ class User < ApplicationRecord
 
   has_one_attached :profile_image
 
+  validates :name, length: { minimum: 1, maximum: 15, message: "は1文字以上、15文字以内で入力してください" }
+  validates :family_name, length: { minimum: 1, maximum: 15, message: "は1文字以上、15文字以内で入力してください" }
+  validates :kana_name, length: { minimum: 1, maximum: 15, message: "は1文字以上、15文字以内で入力してください" }, format: { with: /\A[\p{katakana}\p{blank}ー－]+\z/, message: "はカタカナで入力してください"}
+  validates :kana_family_name, length: { minimum: 1, maximum: 15, message: "は1文字以上、15文字以内で入力してください" }, format: { with: /\A[\p{katakana}\p{blank}ー－]+\z/,  message: "はカタカナで入力してください"}
+  validates :phone_number, uniqueness: true, presence: true
+  validates :company_name, presence: true
+
   # フォロー関係
   has_many :relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
   has_many :reverse_of_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
@@ -18,6 +25,8 @@ class User < ApplicationRecord
   # 参加している現場
   has_many :site_users, dependent: :destroy
   has_many :join_sites, through: :site_users, source: :site
+
+  has_many :personnel, dependent: :destroy
 
 
 

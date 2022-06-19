@@ -1,38 +1,7 @@
 <div class="work_form_page">
   <div class="new_site_content">
     <h2>予定作成</h2>
-    <%=form_with model: @work, url: site_works_path(@site), local: true, method: :post do |f| %>
-      <table class="form_items">
-        <tr>
-          <td class="form_item">
-            <%= f.label :name,"作業名 (*必須)", class: 'label' %><br>
-            <%= f.text_field :name, placeholder: "現場名を入れてください", autofocus: true, class: 'form_field_long' %>
-          </td>
-        </tr>
-        <tr>
-          <td class="form_item">
-            <%= f.label :content,"作業内容  (任意)", class: 'label' %><br>
-            <%= f.text_area :content, placeholder: "作業内容や連絡事項を入れてください", autofocus: true, class: 'form_field_big' %>
-          </td>
-        </tr>
-        <tr>
-          <td class="form_item" colspan=2>
-            <%= f.label :start_date,"開始日時 (*必須)", class: 'label' %><br>
-            <%= f.datetime_select :start_date, {default: Date.today + 0.hours + 00.minutes, minute_step: 60, use_month_numbers:true}, class: 'time_form_field' %>
-          </td>
-        </tr>
-        <tr>
-          <td class="form_item">
-            <%= f.label :end_date,"終了日時  (*必須)", class: 'label' %><br>
-            <%= f.datetime_select :end_date, {default: Date.today + 0.hours + 00.minutes, minute_step: 60, use_month_numbers:true}, class: 'time_form_field' %>
-          </td>
-        </tr>
-        <tr>
-          <td class="work_create_btn">
-            <%= f.submit "作成して人数登録へ", class: "btn btn-success"%>
-          </td>
-        </tr>
-      </table>
-    <%end%>
+    <%=render 'works/form', work: @work, site: @site, site_users: @site_users %>
   </div>
 </div>
+

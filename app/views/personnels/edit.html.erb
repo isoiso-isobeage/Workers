@@ -1,6 +1,5 @@
-<%= render 'layouts/errors', obj: @personnel %>
 <div class="personnels_form_page">
-  <h2>予定人数作成</h2>
+  <h2>予定人数編集</h2>
   <div class="personnels_table">
 
     <table class="table">
@@ -12,7 +11,7 @@
       </thead>
       <tbody>
         <%@site_users.each do |user| %>
-          <%= form_with model: @form, url: site_work_personnels_path(@site, @work), local: true, method: :post do |f| %>
+          <%=form_with model: @personnel, url: site_work_personnels_path(@site, @work), local: true, method: :post do |f| %>
             <tr>
               <td><%=user.company_name%></td>
               <td><%=user.get_full_name(user)%></td>
@@ -26,10 +25,6 @@
         <%end%>
       </tbody>
     </table>
-    
-     
+
   </div>
 </div>
-
-
-

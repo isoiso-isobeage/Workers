@@ -1,15 +1,24 @@
 // Place all the styles related to the works controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
-.work_form_page h2 {
+.work_form_page {
+  h2 {
   padding-top: 10%;
   text-align: center;
+  }
 
+  .work_form_table {
+    width: 60%;
+    text-align: center;
+    margin: 0 auto;
+
+    td {
+      width: 30%;
+    }
+  }
 }
 
-.work_create_btn {
-  text-align: center;
-}
+
 
 .work_show_page {
 
@@ -34,3 +43,12 @@
   }
 }
 
+.add_fields {
+  text-decoration: none;
+  border: none;
+  
+}
+
+.work_create_btn {
+  padding: 0 348px 50px;
+}

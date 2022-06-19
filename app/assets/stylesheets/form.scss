@@ -19,7 +19,7 @@
     margin-right: 15px;
     margin-bottom: 30px;
     border:1px solid gray;
-    border-radius: 30px;
+    border-radius: 5px;
 }
 
 .form_field_long {
@@ -28,7 +28,7 @@
     padding: 5px 5px;
     margin-bottom: 20px;
     border:1px solid gray;
-    border-radius: 30px;
+    border-radius: 5px;
 }
 
 .form_field_big {
@@ -38,7 +38,7 @@
     padding: 5px 5px;
     margin-bottom: 20px;
     border:1px solid gray;
-    border-radius: 30px;
+    border-radius: 5px;
 }
 
 .time_form_field {
@@ -48,13 +48,32 @@
     margin-right: 5px;
     margin-bottom: 30px;
     border:1px solid gray;
-    border-radius: 30px;
+    border-radius: 5px;
 }
 
 .number_field {
-    width: 50px;
+    width: 60px;
+    height: 38px;
     border:1px solid gray;
     border-radius: 5px;
+}
+
+.search_field {
+    border:1px solid gray;
+    border-radius: 5px;
+}
+
+.select_form_field {
+    width: 380px;
+    height: 38px;
+    margin-right: 20px;
+    border:1px solid gray;
+    border-radius: 5px;
+}
+
+.personnel_forms {
+  width: 60%;
+  margin: 0 auto;
 }
 
 input:focus     { outline:none; }

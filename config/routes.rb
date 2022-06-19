@@ -28,6 +28,7 @@ Rails.application.routes.draw do
 
     # 作業関連
     resources :works
+    patch 'works/:id/update_all' => 'works#update_all', as: 'work_update_all'
   end
 
   resources :notifications, only: [:index]

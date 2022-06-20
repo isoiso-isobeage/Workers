@@ -10,7 +10,9 @@
 
   <div class="time_area">
     <h5>日時</h5>
-    <p><%=l @work.start_date%><span>~</span><%=@work.end_date%></p>
+    <p><%=l @work.start_date, format: :short%>
+    <span>~</span>
+    <%=l @work.end_date, format: :short%></p>
   </div>
 
   <%if @personnels.blank?%>

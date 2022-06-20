@@ -1,5 +1,6 @@
 class PersonnelsController < ApplicationController
-
+  before_action :authenticate_user!
+  
   def new
     @personnel = Personnel.new
     @site = Site.find(params[:site_id])

@@ -1,5 +1,7 @@
 class Work < ApplicationRecord
 
+  validates :name, presence: true, length: { minimum: 1, maximum: 15, message: "は1文字以上、15文字以内で入力してください" }
+  validates :content, length: {maximum: 300, message: "15文字以内で入力してください" }
   validates :start_date, presence: true
   validates :end_date, presence: true
   validate :start_finish_check

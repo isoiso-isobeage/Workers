@@ -1,4 +1,5 @@
 class SitesController < ApplicationController
+  before_action :authenticate_user!
 
 
   def new
@@ -22,14 +23,13 @@ class SitesController < ApplicationController
   end
 
 
-  def show
-    @site = Site.find(params[:id])
-    @works = @site.works
-  end
-
-
   def edit
     @site = Site.find(params[:id])
+    if @site.user_id == current_user.id
+      render 'edit'
+    else
+      redirect_to '/'
+    end
   end
 
 

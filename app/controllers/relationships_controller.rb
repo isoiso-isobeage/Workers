@@ -1,4 +1,5 @@
 class RelationshipsController < ApplicationController
+  before_action :authenticate_user!
 
 
   def create
@@ -14,8 +15,15 @@ class RelationshipsController < ApplicationController
 
 
   def index
-    @followings = current_user.followings
-    @followers = current_user.followers
+    @user = User.find(params[:user_id])
+    if @user == current_user
+      @followings = current_user.followings
+      @followers = current_user.followers
+      render 'index'
+    else
+      redirect_to user_path(current_user)
+    end
+
   end
 
 

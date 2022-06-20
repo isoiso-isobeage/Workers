@@ -80,7 +80,7 @@ $(document).ready(function() {
 
       // 選択したイベントのIDを取得
       const id = info.event.id;
-      const site_id = info.event.site_id
+      const site_id = info.event.site_id;
 
       $.ajax({
         type: 'GET', // HTTPメソッド
@@ -109,7 +109,11 @@ $(document).ready(function() {
         url: '/sites/' + site_id + '/works/' + id,
         data: { id: id, start_date: start, end_date: end, authenticity_token: form.authenticity_token.value },
         dataType: 'json'
-      });
+      }).fail(function (result){
+        // 失敗処理
+        alert("データを更新できません");
+        location.reload();
+        });
       calendar.render();
     },
 

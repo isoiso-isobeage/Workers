@@ -12,4 +12,7 @@ class Site < ApplicationRecord
 
   has_many :works, dependent: :destroy
 
+  # 通知機能
+  has_many :notifications, dependent: :destroy
+
 end

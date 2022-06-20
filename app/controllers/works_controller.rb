@@ -16,17 +16,14 @@ class WorksController < ApplicationController
 
 
   def create
-    site = Site.find(params[:site_id])
-    work = Work.new(work_params)
-    work.site_id = site.id
+    @site = Site.find(params[:site_id])
+    @work = Work.new(work_params)
+    @site_users = @site.users
 
-    if !duplicate_company? && work.save
-      redirect_to site_work_path(site, work)
+    if !duplicate_company? && @work.save
+      current_user.create_notification_work(current_user, @site_users, @site, @work)
+      redirect_to site_work_path(@site, @work)
     else
-      @work = Work.new
-      @work.personnels.build
-      @site = Site.find(params[:site_id])
-      @site_users = @site.users
       render 'new'
     end
 
@@ -84,16 +81,14 @@ class WorksController < ApplicationController
 
 
   def update_all
-    work = Work.find(params[:id])
-    site = Site.find(work.site_id)
+    @work = Work.find(params[:id])
+    @site = Site.find(@work.site_id)
+    @site_users = @site.users
     # 現場を作成したユーザーのみ変更可能
-    if site.user_id == current_user.id && !duplicate_company?
-      work.update(work_params)
-      redirect_to site_work_path(site, work)
+    if @site.user_id == current_user.id && !duplicate_company? && @work.update(work_params)
+      current_user.create_notification_work(current_user, @site_users, @site, @work)
+      redirect_to site_work_path(@site, @work)
     else
-      @site = Site.find(params[:site_id])
-      @work = Work.find(params[:id])
-      @site_users = @site.users
       render 'edit'
     end
   end

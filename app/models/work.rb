@@ -11,6 +11,8 @@ class Work < ApplicationRecord
   belongs_to :site
   # 人数
   has_many :personnels, dependent: :destroy
+  # 通知機能
+  has_many :notifications, dependent: :destroy
 
   accepts_nested_attributes_for :personnels, allow_destroy: true
 

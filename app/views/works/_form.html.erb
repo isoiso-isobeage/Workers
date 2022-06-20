@@ -2,6 +2,7 @@
   <table class="form_items">
     <tr>
       <td class="form_item">
+        <%=f.hidden_field :site_id, :value => site.id %>
         <%= f.label :name,"作業名 (*必須)", class: 'label' %><br>
         <%= f.text_field :name, placeholder: "現場名を入れてください", autofocus: true, class: 'form_field_long' %>
       </td>

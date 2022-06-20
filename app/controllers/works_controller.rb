@@ -33,7 +33,7 @@ class WorksController < ApplicationController
   end
 
   def index
-    @site = Site.find(params[:site_id])
+    @site = Site.find_by(id: params[:site_id])
     @site_users = @site.users
     @works = @site.works
     if @site.user_id == current_user.id || site_users?(@site_users, current_user)
@@ -100,6 +100,10 @@ class WorksController < ApplicationController
 
 
   def destroy
+    @work = Work.find(params[:id])
+    @site = @work.site_id
+    @work.destroy
+    redirect_to site_works_path(@site)
   end
 
 

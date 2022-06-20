@@ -1,5 +1,9 @@
 <h2 class="calendar_site_name">現場名:<%=@site.name %></h2>
 
+<%if @site.user_id == current_user.id %>
+  <%=link_to '現場情報編集', edit_site_path(@site), class: 'btn btn-success' %>
+<%end%>
+
 <div id='calendar'></div>
 <!--authenticity_token.valueを取得するために用意-->
 <%=form_with model: @work, id: "event" %>

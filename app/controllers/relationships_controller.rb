@@ -1,8 +1,11 @@
 class RelationshipsController < ApplicationController
+  before_action :authenticate_user!
 
 
   def create
-    current_user.follow(params[:user_id])
+    user = User.find(params[:user_id])
+    current_user.follow(user)
+    current_user.create_notification_follow(current_user, user)
     redirect_to request.referer
   end
 
@@ -14,8 +17,15 @@ class RelationshipsController < ApplicationController
 
 
   def index
-    @followings = current_user.followings
-    @followers = current_user.followers
+    @user = User.find(params[:user_id])
+    if @user == current_user
+      @followings = current_user.followings
+      @followers = current_user.followers
+      render 'index'
+    else
+      redirect_to user_path(current_user)
+    end
+
   end
 
 

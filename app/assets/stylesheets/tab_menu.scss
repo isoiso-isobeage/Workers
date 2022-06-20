@@ -44,6 +44,12 @@
     background: $select-color;
   }
 
+  .tab_flex {
+    display: flex;
+    width: 55%;
+    text-align: left;
+  }
+
   .tab_user_profile_image {
   width: 120px;
   height: 120px;

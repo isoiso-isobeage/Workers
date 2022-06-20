@@ -26,13 +26,19 @@ class User < ApplicationRecord
   has_many :site_users, dependent: :destroy
   has_many :join_sites, through: :site_users, source: :site
 
-  has_many :personnel, dependent: :destroy
+
+  # 通知関連
+
+  # 通知を送った
+  has_many :active_notifications, class_name: 'Notification', foreign_key: 'visitor_id', dependent: :destroy
+  # 通知が送られた
+  has_many :passive_notifications, class_name: 'Notification', foreign_key: 'visited_id', dependent: :destroy
 
 
 
   # フォローする
-  def follow(user_id)
-    relationships.create(followed_id: user_id)
+  def follow(user)
+    relationships.create(followed_id: user.id)
   end
 
   # フォロー外す
@@ -51,6 +57,35 @@ class User < ApplicationRecord
     return mutual_follow_users
   end
 
+
+  # フォロー時の通知レコード作成
+  def create_notification_follow(current_user, user)
+    follow = Notification.where(visitor_id: current_user.id, visited_id: user.id, action: 0, checked: false)
+    if follow.blank?
+      notification = current_user.active_notifications.new(visitor_id: current_user.id, visited_id: user.id, action: 0)
+      notification.save if notification.valid?
+    end
+  end
+
+
+  # 現場ユーザー追加時の通知レコード作成
+  def create_notification_site_user(current_user, user, site)
+    site_user = Notification.where(visitor_id: current_user.id, visited_id: user.id, site_id: site.id, action: 1, checked: false)
+    if site_user.blank?
+      notification = current_user.active_notifications.new(visitor_id: current_user.id, visited_id: user.id, site_id: site.id, action: 1)
+      notification.save if notification.valid?
+    end
+  end
+
+
+  def create_notification_work(current_user, site_users, site, work)
+    site_users.each do |user|
+      notification = current_user.active_notifications.new(visitor_id: current_user.id, visited_id: user.id, site_id: site.id, work_id: work.id, action: 2)
+      notification.save if notification.valid?
+    end
+  end
+
+
   def get_profile_image
     (profile_image.attached?) ? profile_image : 'no_image.jpg'
   end
@@ -58,5 +93,6 @@ class User < ApplicationRecord
   def get_full_name(user)
     user.family_name + " " + user.name
   end
+
 
 end

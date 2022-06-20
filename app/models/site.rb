@@ -10,6 +10,9 @@ class Site < ApplicationRecord
   has_many :site_users, dependent: :destroy
   has_many :users, through: :site_users
 
-  has_many :works
+  has_many :works, dependent: :destroy
+
+  # 通知機能
+  has_many :notifications, dependent: :destroy
 
 end

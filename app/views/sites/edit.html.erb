@@ -19,7 +19,7 @@
         <tr>
           <td colspan=2>
             <%= f.submit "変更", class: "btn btn-success"%>
-            <%=link_to '現場削除', site_path(@site), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-success" %>
+            <%=link_to '現場削除', site_path(@site), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-danger" %>
           </td>
         </tr>
       </table>

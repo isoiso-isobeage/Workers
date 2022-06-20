@@ -1,4 +1,5 @@
 class SitesController < ApplicationController
+  before_action :authenticate_user!
 
 
   def new
@@ -9,7 +10,7 @@ class SitesController < ApplicationController
     @site = Site.new(site_params)
     @site.user_id = current_user.id
     if @site.save
-      redirect_to site_path(@site)
+      redirect_to site_works_path(@site)
     else
       render 'new'
     end
@@ -22,21 +23,20 @@ class SitesController < ApplicationController
   end
 
 
-  def show
-    @site = Site.find(params[:id])
-    @works = @site.works
-  end
-
-
   def edit
     @site = Site.find(params[:id])
+    if @site.user_id == current_user.id
+      render 'edit'
+    else
+      redirect_to '/'
+    end
   end
 
 
   def update
     @site = Site.find(params[:id])
     if @site.update(site_params)
-      redirect_to site_path(@site)
+      redirect_to site_works_path(@site)
     else
       render 'edit'
     end
@@ -46,7 +46,7 @@ class SitesController < ApplicationController
   def destroy
     @site = Site.find_by(params[:id])
     @site.destroy
-    redirect_to user_path(current_user)
+    redirect_to sites_path
   end
 
   private

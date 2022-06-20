@@ -1,19 +1,23 @@
 class SiteUsersController < ApplicationController
+  before_action :authenticate_user!
 
 
   def index
     @site_user = SiteUser.new
-
     @site = Site.find(params[:site_id])
+    if @site.user_id == current_user.id
+      # 現場に参加しているユーザーを取得
+      @site_users = @site.users
+      # 相互フォローを取得
+      @mutual_follow_users = current_user.mutual_follow_users(current_user)
+      # 相互フォローで現場に参加していないユーザーの配列を作成。mutual_follow_users(user)は相互フォローを確認するメソッド
+      @add_users = @mutual_follow_users - @site_users
 
-    # 現場に参加しているユーザーを取得
-    @site_users = @site.users
+      render 'index'
 
-    # 相互フォローを取得
-    @mutual_follow_users = current_user.mutual_follow_users(current_user)
-
-    # 相互フォローで現場に参加していないユーザーの配列を作成。mutual_follow_users(user)は相互フォローを確認するメソッド
-    @add_users = @mutual_follow_users - @site_users
+    else
+      redirect_to '/'
+    end
 
   end
 

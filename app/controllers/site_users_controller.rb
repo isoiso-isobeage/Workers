@@ -24,10 +24,11 @@ class SiteUsersController < ApplicationController
   def create
     site_user = SiteUser.new(site_user_params)
     if site_user.save
-      redirect_to request.referer
-    else
-      redirect_to request.referer
+      site = site_user.site
+      user = site_user.user
+      current_user.create_notification_site_user(current_user, user, site)
     end
+    redirect_to request.referer
   end
 
 

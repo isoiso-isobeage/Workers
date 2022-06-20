@@ -1,0 +1,54 @@
+<% checked_notifications.each do |notification| %>
+
+  <%case notification.action when 'follow'%>
+
+    <%=link_to user_path(notification.visitor), class: 'tab_content' do%>
+
+      <div class="tab_flex">
+        <div>
+          <%=image_tag notification.visitor.get_profile_image, class: 'tab_user_profile_image' %>
+        </div>
+        <div class="tab_content_names">
+          <h6><%= notification.visitor.get_full_name(notification.visitor) %>さんがあなたをフォローしました。</h6>
+        </div>
+      </div>
+
+
+    <%end%>
+
+  <%when 'site_user'%>
+
+    <%=link_to site_works_path(notification.site), class: 'tab_content' do%>
+
+      <div class="tab_flex">
+        <div>
+          <%=image_tag notification.visitor.get_profile_image, class: 'tab_user_profile_image' %>
+        </div>
+        <div class="tab_content_names">
+          <h6><%= notification.visitor.get_full_name(notification.visitor) %>さんがあなたを<%=notification.site.name %>に招待しました。</h6>
+        </div>
+      </div>
+
+
+    <%end%>
+
+  <%when 'work'%>
+
+    <%=link_to site_work_path(notification.site, notification.work), class: 'tab_content' do%>
+
+      <div class="tab_flex">
+        <div>
+          <%=image_tag notification.visitor.get_profile_image, class: 'tab_user_profile_image' %>
+        </div>
+        <div class="tab_content_names">
+          <p><%=l notification.work.start_date, format: :short%>開始予定</p>
+          <h6><%=notification.site.name %>の予定が更新されました。</h6>
+        </div>
+      </div>
+
+    <%end%>
+
+
+  <%end%>
+
+<%end%>

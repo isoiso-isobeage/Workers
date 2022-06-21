@@ -33,9 +33,11 @@
       </tbody>
     </table>
   <%end%>
-  <div class="work_btn_area">
-    <div>
-      <%=link_to '作業内容を編集', edit_site_work_path(@site, @work)%>
+  <%if @site.user_id == current_user.id%>
+    <div class="work_btn_area">
+      <div>
+        <%=link_to '作業内容を編集', edit_site_work_path(@site, @work)%>
+      </div>
     </div>
-  </div>
+  <%end%>
 </div>

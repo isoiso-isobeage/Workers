@@ -94,9 +94,13 @@ main {
 
   @media (max-width: ($pc)) {
     width: 100%;
-    margin-left: 0;
-    margin-top: 100px;
+    margin: 0;
   }
+
+  @media (max-width: ($sp)) {
+    width: 100%;
+    margin: 0;
+}
 }
 
 section {

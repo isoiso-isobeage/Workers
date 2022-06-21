@@ -1,0 +1,22 @@
+#error_explanation {
+  width : 60%;
+  text-align: left;
+  padding-top: 10px;
+  margin: 0 auto;
+  color: red;
+  h2 {
+    font-size: 20px;
+  }
+  li {
+    list-style: none;
+  }
+}
+
+.notice {
+  margin: 0;
+  color: green;
+}
+
+.alert {
+  margin: 0;
+}

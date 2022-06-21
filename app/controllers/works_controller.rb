@@ -33,6 +33,7 @@ class WorksController < ApplicationController
     @site = Site.find_by(id: params[:site_id])
     @site_users = @site.users
     @works = @site.works
+    pp @works
     if @site.user_id == current_user.id || site_users?(@site_users, current_user)
       render 'index'
     else
@@ -72,7 +73,7 @@ class WorksController < ApplicationController
   # ドラッグドロップ用のアップデートアクション
   def update
     @work = Work.find(params[:id])
-    @site = work.site
+    @site = @work.site
     # 現場を作成したユーザーのみ変更可能
     if @site.user_id == current_user.id
       @work.update(start_date: params[:start_date], end_date: params[:end_date])

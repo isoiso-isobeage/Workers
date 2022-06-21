@@ -80,7 +80,7 @@ $(document).ready(function() {
 
       // 選択したイベントのIDを取得
       const id = info.event.id;
-      const site_id = info.event.site_id;
+      const site_id = info.event._def.extendedProps.site_id;
 
       $.ajax({
         type: 'GET', // HTTPメソッド
@@ -92,7 +92,7 @@ $(document).ready(function() {
 
     eventDrop: function(info){
       const id = info.event.id;
-      const site_id = info.event.site_id;
+      const site_id = info.event._def.extendedProps.site_id; //info.event.site_id;
       const start = info.event.start;
       const end = info.event.end;
 
@@ -101,6 +101,7 @@ $(document).ready(function() {
 
       console.log(id);
       console.log(start);
+      console.log(info.event);
 
 
 

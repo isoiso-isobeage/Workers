@@ -5,5 +5,4 @@ json.array!(@works) do |work|
     json.end work.end_date
     json.site_id work.site_id
     json.url site_work_path(work.site_id, work.id)
-    pp work.site_id
    end

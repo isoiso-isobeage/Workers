@@ -33,7 +33,6 @@ class WorksController < ApplicationController
     @site = Site.find_by(id: params[:site_id])
     @site_users = @site.users
     @works = @site.works
-    pp @works
     if @site.user_id == current_user.id || site_users?(@site_users, current_user)
       render 'index'
     else

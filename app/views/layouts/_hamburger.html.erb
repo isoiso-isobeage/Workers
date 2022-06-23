@@ -1,5 +1,4 @@
 <div id="sp-menu">
-  <h2>MENU</h2>
   <ul>
     <%if user_signed_in? && !@site.blank?%>
       <%= render 'layouts/site_header', site: @site %>

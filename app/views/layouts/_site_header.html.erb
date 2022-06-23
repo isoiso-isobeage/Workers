@@ -2,6 +2,7 @@
 <%if site.user_id == current_user.id %>
   <li><%=link_to '予定作成', new_site_work_path(site) %></li>
   <li><%=link_to '現場関係者', site_users_path(site) %></li>
+  <li><%=link_to '現場情報編集', edit_site_path(site)%></li>
 <%end%>
 <li><%=link_to '通知', notifications_path %></li>
 <li><%=link_to 'Home', '/' %></li>

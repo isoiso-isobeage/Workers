@@ -7,7 +7,7 @@ import Rails from "@rails/ujs"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 import "jquery";
-import "../stylesheets/application"
+
 import "@nathanvda/cocoon"
 
 Rails.start()

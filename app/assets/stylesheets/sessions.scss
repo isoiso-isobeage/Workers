@@ -1,8 +1,14 @@
-.log_in_form {
-  text-align: center;
-  position: relative;
-}
+@import "./application";
 
 .log_in_content {
+  text-align: center;
   padding-top: 15%;
+
+  p {
+    padding-top: 10px;
+  }
+
+  @media screen and (max-width: ($pc)) {
+    padding-top: 30%;
+  }
 }

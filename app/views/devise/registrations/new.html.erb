@@ -1,1 +1,13 @@
-<%= render "devise/registrations/new", user: @user %>
+<%= render "devise/shared/error_messages", resource: resource %>
+<%=form_with model: @user, url: user_registration_path, local: true, method: :post do |f| %>
+<div class="sign_up_content">
+  <h2>新規登録</h2>
+  <%= render "devise/registrations/new", f: f %>
+  <div class='text-center'>
+    <%= f.submit "新規登録", class: "btn btn-success"%>
+  </div>
+</div>
+<%end%>
+<p class='text-center pt-5'>
+  ユーザー登録がお済みの方は<span><%= render "devise/shared/links" %></span>から
+</p>

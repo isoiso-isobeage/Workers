@@ -7,8 +7,12 @@ import Rails from "@rails/ujs"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 import "jquery";
-import "../stylesheets/application"
+import "popper.js";
+import "bootstrap";
 import "@nathanvda/cocoon"
+//= require jquery
+//= require moment
+//= require fullcalendar
 
 Rails.start()
 ActiveStorage.start()

@@ -1,36 +1,36 @@
-<div class="log_in_form">
-  <div class="log_in_content">
-    <h2>ログイン</h2>
+<%= render "devise/shared/error_messages", resource: resource %>
+<div class="log_in_content">
 
-    <!--入力フォーム-->
-    <%=form_with model: user, url: user_session_path, local: true, method: :post do |f| %>
+  <h2>ログイン</h2>
 
-    <table class="form_items">
-      <tbody>
+  <!--入力フォーム-->
+  <%=form_with model: user, url: user_session_path, local: true, method: :post do |f| %>
 
-        <tr>
-          <td class="form_item">
-            <%= f.label :email,"メールアドレス", class: 'label' %><br>
-            <%= f.email_field :email, placeholder: "例）yamada@yama2.co.jp", autofocus: true, class: 'form_field_long' %>
-          </td>
-        </tr>
+  <table class="form_items">
+    <tbody>
 
-        <tr>
-          <td class="form_item">
-            <%= f.label :password,"パスワード(6文字以内)", class: 'label' %><br>
-            <%= f.password_field :password, autocomplete: 'off', class: 'form_field_long' %>
-          </td>
-        </tr>
+      <tr>
+        <td class="form_item">
+          <%= f.label :email,"メールアドレス", class: 'label' %><br>
+          <%= f.email_field :email, placeholder: "例）yamada@yama2.co.jp", autofocus: true, class: 'form_field_long' %>
+        </td>
+      </tr>
 
-      </tbody>
-    </table>
-    <div class='text-center'>
-      <%= f.submit "ログイン", class: "btn btn-success"%>
-    </div>
-    <%end%>
+      <tr>
+        <td class="form_item">
+          <%= f.label :password,"パスワード(6文字以内)", class: 'label' %><br>
+          <%= f.password_field :password, autocomplete: 'off', class: 'form_field_long' %>
+        </td>
+      </tr>
 
-    ユーザー登録がお済みでない方は<%= render "devise/shared/links" %>から
-
+    </tbody>
+  </table>
+  <div class='text-center'>
+    <%= f.submit "ログイン", class: "btn btn-success"%>
   </div>
-
+  <%end%>
+  <p>ユーザー登録がお済みでない方は<span><%= render "devise/shared/links" %></span>から</p>
 </div>
+
+
+

@@ -1,6 +1,7 @@
 // Place all the styles related to the sites controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+@import "./application";
 
 .calendar_site_name {
   text-align: center;
@@ -15,4 +16,21 @@
     padding-top: 10%;
     text-align: center;
   }
+}
+
+
+
+// newページ関連
+.new_site_content {
+
+  .new_site_btn {
+  text-align: center;
+  }
+
+  @media screen and (max-width: ($pc)) {
+    text-align: center;
+    padding-top: 100px;
+  }
+
+
 }

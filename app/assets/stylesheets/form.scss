@@ -1,5 +1,13 @@
+@import "./application";
+
 .form_items {
-    margin: auto;
+  margin: auto;
+  width: 530px;
+  display: table;
+  table-layout: fixed;
+  @media screen and (max-width: ($sp)) {
+    width: 100%;
+  }
 }
 
 .form_item {
@@ -10,6 +18,9 @@
     position: absolute;
     top: 0;
     left: 0;
+    @media screen and (max-width: ($sp)) {
+    left: 30px;
+  }
 }
 
 .form_field {
@@ -20,6 +31,9 @@
     margin-bottom: 30px;
     border:1px solid gray;
     border-radius: 5px;
+    @media (max-width: ($sp)) {
+    width: 120px;
+  }
 }
 
 .form_field_long {
@@ -29,6 +43,10 @@
     margin-bottom: 20px;
     border:1px solid gray;
     border-radius: 5px;
+
+    @media screen and (max-width: ($sp)) {
+    width: 320px;
+  }
 }
 
 .form_field_big {
@@ -39,6 +57,10 @@
     margin-bottom: 20px;
     border:1px solid gray;
     border-radius: 5px;
+
+    @media screen and (max-width: ($sp)) {
+    width: 330px;
+  }
 }
 
 .time_form_field {

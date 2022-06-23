@@ -17,69 +17,28 @@
 //
 
 $pc: 1024px; // PC
-$tab: 690px; // タブレット
-$sp: 480px; // スマホ
+$tab: 768px; // タブレット
+$sp: 426px; // スマホ
 $select-color: rgba(192,192,192,0.2);//選択時の背景色
 
 // 全体の調整
-*{
+#body {
   font-family: Meiryo;
   margin: 0;
   padding: 0;
   line-height: 1.85;
   letter-spacing: 0.05em;
+  background-color: red;
+}
+
+a {
+  color: black;
 }
 
 // フォームのアウトラインを削除
 input:focus     { outline:none; }
 
-// ナビゲーション位置固定
-.nav_fix {
-  position: fixed;
-  z-index: 10;
-  top: 55px;
-  left: 15%;
-  width: 220px;
 
-  @media (max-width: (1430px)) {
-    left: 10%;
-  }
-
-  // ナビゲーションリンクを画面から消す
-  @media (max-width: ($pc)) {
-    display: none;
-  }
-}
-
-// headerの文字サイズや太さ、位置を調整
-.main_nav  {
-  font-size: 25px;
-  font-weight: 400;
-  margin: 70px 0;
-
-  & li {
-    margin-bottom: 20px;
-    list-style: none;
-    }
-}
-
-// 検索フォーム位置調整
-.search_area {
-  padding-top: 30px;
-  text-align: center;
-}
-
-// 検索フォームサイズ
-.search_field {
-  font-size: 40px 20px;
-}
-// headerのリンク調整
-.nav_link {
-  padding: 0;
-  text-decoration: none;
-  border: none;
-  border-bottom:1px solid #757575;
-}
 
 
 // main要素のレスポンシブ
@@ -94,16 +53,129 @@ main {
 
   @media (max-width: ($pc)) {
     width: 100%;
-    margin: 0;
+    margin: 100px auto;
+    border: none;
+  }
+
+  @media (max-width: ($tab)) {
+  width: 100%;
   }
 
   @media (max-width: ($sp)) {
-    width: 100%;
-    margin: 0;
-}
+  width: 100%;
+  }
 }
 
 section {
   width: 800px;
 }
 
+
+
+
+
+
+
+
+// ハンバーガーメニュー
+#hm-head {
+  width: 100%;
+  height: 80px;
+  background: red;
+  position: fixed;
+  top: 0;
+  z-index: 10;
+  display: none;
+
+  @media screen and (max-width: ($pc)) {
+    display: block;
+  }
+
+}
+
+#hm-icon {
+  position: fixed;
+  right: 20px;
+  top: 20px;
+  z-index: 10;
+  display: none;
+
+  .menu-trigger,
+  .menu-trigger span {
+    display: inline-block;
+    transition: all .4s;
+    box-sizing: border-box;
+  }
+  .menu-trigger {
+    position: relative;
+    width: 50px;
+    height: 44px;
+  }
+  .menu-trigger span {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background-color: #000;
+    border-radius: 4px;
+  }
+  .menu-trigger span:nth-child(1) {
+    top: 0;
+  }
+  .menu-trigger span:nth-child(2) {
+    top: 20px;
+  }
+  .menu-trigger span:nth-child(3) {
+    bottom: 0;
+  }
+  .menu-trigger.active span:nth-child(1) {
+    -webkit-transform: translateY(20px) rotate(-45deg);
+    transform: translateY(20px) rotate(-45deg);
+    background-color: #fff;
+  }
+  .menu-trigger.active span:nth-child(2) {
+    opacity: 0;
+  }
+  .menu-trigger.active span:nth-child(3) {
+    -webkit-transform: translateY(-20px) rotate(45deg);
+    transform: translateY(-20px) rotate(45deg);
+    background-color: #fff;
+  }
+
+  @media screen and (max-width: ($pc)) {
+    display: block;
+  }
+}
+
+
+/* ------------------------ */
+/* ------ spメニュー ------ */
+/* ------------------------ */
+#sp-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #000;
+  color: #fff;
+  width: 100%;
+  min-height: 100%;
+  display: none;
+  z-index: 9;
+
+  ul {
+    padding-top: 150px;
+  }
+
+  li {
+    text-align: center;
+    margin-bottom: 30px;
+    list-style: none;
+  }
+
+  a {
+    color: #fff;
+    font-size: 25px;
+    text-decoration: none;
+    font-weight: bold;
+  }
+}

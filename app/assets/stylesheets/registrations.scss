@@ -1,8 +1,15 @@
-.sign_up_form {
-    padding-top: 50px;
+@import "./application";
 
-    h2 {
-        text-align: center;
-    }
+.sign_up_content {
+  padding-top: 50px;
+  text-align: center;
+
+  h2 {
+    text-align: center;
+  }
+
+  @media (max-width: ($pc)) {
+    padding-top: 0;
+  }
 }
 

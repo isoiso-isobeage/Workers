@@ -1,0 +1,33 @@
+<div id="sp-menu">
+  <h2>MENU</h2>
+  <ul>
+    <%if user_signed_in? && !@site.blank?%>
+      <%= render 'layouts/site_header', site: @site %>
+    <!--ログイン時のナビゲーション-->
+    <%elsif user_signed_in?%>
+      <li><%=link_to 'Profile', user_path(current_user) %></li>
+      <li><%=link_to '現場作成', new_site_path %></li>
+      <li><%=link_to '現場一覧', sites_path %></li>
+      <li><%=link_to 'ユーザー検索', search_path %></li>
+      <li><%=link_to 'Follow', user_follows_path(current_user) %></li>
+      <li><%=link_to '通知', notifications_path %></li>
+      <li><%=link_to 'Log Out', destroy_user_session_path, method: :delete %></li>
+    <%else%>
+    <!--ログイン前のナビゲーション-->
+      <li><%=link_to 'Home', '/' %></li>
+      <li><%=link_to 'About', home_about_path %></li>
+      <li><%=link_to 'Sign Up', new_user_registration_path %></li>
+      <li><%=link_to 'Log In', new_user_session_path %></li>
+    <%end%>
+  </ul>
+</div>
+
+<div id="hm-head">
+  <div id="hm-icon">
+    <a class="menu-trigger" href="#">
+      <span></span>
+      <span></span>
+      <span></span>
+    </a>
+  </div>
+</div>

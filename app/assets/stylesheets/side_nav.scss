@@ -1,0 +1,50 @@
+@import "./application";
+
+// ナビゲーション位置固定
+#nav_fix {
+  color: black;
+  position: fixed;
+  z-index: 10;
+  top: 55px;
+  left: 15%;
+  width: 220px;
+
+  // headerの文字サイズや太さ、位置を調整
+  .main_nav  {
+    font-size: 25px;
+    font-weight: 400;
+    margin: 70px 0;
+
+    li {
+      margin-bottom: 20px;
+      list-style: none;
+    }
+
+    a {
+      color: black;
+      text-decoration: none;
+      border: none;
+      font-weight: bold;
+    }
+  }
+
+
+
+
+  @media screen and (max-width: (1430px)) {
+    left: 2%;
+  }
+
+  // ナビゲーションリンクを画面から消す
+  @media screen and (max-width: ($pc)) {
+    display: none;
+  }
+}
+
+
+// 検索フォーム位置調整
+.search_area {
+  padding-top: 30px;
+  text-align: center;
+}
+

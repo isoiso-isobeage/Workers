@@ -14,14 +14,16 @@
     <script src="https://kit.fontawesome.com/7884f4fd05.js" crossorigin="anonymous"></script>
   </head>
 
-  <body>
+  <body id="body">
+
     <%= render 'layouts/header' %>
     <main id="main">
       <p class="notice"><%= notice %></p>
       <p class="alert"><%= alert %></p>
       <%= yield %>
     </main>
-
+    <!--ハンバーガーメニュー読み込み-->
+    <%= javascript_pack_tag 'hamburger' %>
   </body>
 </html>
 

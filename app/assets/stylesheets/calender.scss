@@ -5,7 +5,6 @@
   padding-top: 6%;
   margin: 0 auto;
   min-height: 100vh;
-  height: auto ;
   width: 80%;
 
   // 各a要素の設定
@@ -32,16 +31,19 @@
 
   .fc-event-title {
     text-align: center;
-    @media (max-width: ($pc)) {
-      font-size: 5px;
-    }
   }
 
 
   @media (max-width: ($pc)) {
     padding-top: 10%;
     margin: 0 auto;
+    height: 500px;
+    min-height: 0;
     width: 90%;
+
+    .fc-event-title {
+      font-size: 5px;
+    }
 
     // カレンダーの高さ
     tbody  {

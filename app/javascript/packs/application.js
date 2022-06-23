@@ -7,7 +7,11 @@ import Rails from "@rails/ujs"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 import "jquery";
-
+import "@fullcalendar/common/main.css"
+import "@fullcalendar/daygrid/main.css"
+import "@fullcalendar/list/main.css"
+import "@fullcalendar/timeglid/main.css"
+import "@fullcalendar/interaction/main.css"
 import "@nathanvda/cocoon"
 
 Rails.start()

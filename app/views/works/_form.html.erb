@@ -20,7 +20,7 @@
       </td>
     </tr>
     <tr>
-      <td class="form_item">
+      <td class="form_item" colspan=2>
         <%= f.label :end_date,"終了日時  (*必須)", class: 'label' %><br>
         <%= f.datetime_select :end_date, {default: Date.today + 0.hours + 00.minutes, minute_step: 60, use_month_numbers:true}, class: 'time_form_field' %>
       </td>
@@ -34,14 +34,14 @@
       <%=render 'personnels', site_users: site_users, f: personnel %>
     <%end%>
 
-    <span class="append_link">
+    <div class="append_link">
         <%=link_to_add_association '追加', f, :personnels, partial: 'works/personnels',
          render_options: {locals: {site_users: site_users}},
         class: 'btn btn-success'%>
-    </span>
+    </div>
   </div>
 
-  <div class="work_create_btn d-grid gap-2">
+  <div class="work_create_btn">
     <%= f.submit "作成", class: "btn btn-success btn-lg"%>
   </div>
 <%end%>

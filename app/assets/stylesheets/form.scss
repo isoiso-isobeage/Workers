@@ -4,7 +4,6 @@
   margin: auto;
   width: 530px;
   display: table;
-  table-layout: fixed;
   @media screen and (max-width: ($sp)) {
     width: 100%;
   }
@@ -71,6 +70,11 @@
     margin-bottom: 30px;
     border:1px solid gray;
     border-radius: 5px;
+
+    @media screen and (max-width: ($sp)) {
+    width: 50px;
+    font-size: 10px;
+    }
 }
 
 .number_field {
@@ -91,11 +95,23 @@
     margin-right: 20px;
     border:1px solid gray;
     border-radius: 5px;
+
+    @media screen and (max-width: ($sp)) {
+    width: 250px;
+  }
 }
 
 .personnel_forms {
   width: 60%;
   margin: 0 auto;
+}
+
+.file_field {
+  text-align: left;
+
+  @media screen and (max-width: ($sp)) {
+    padding-left: 30px;
+  }
 }
 
 input:focus     { outline:none; }

@@ -5,8 +5,8 @@
         <%= f.label :family_name,"性", class: 'label' %><br>
         <%= f.text_field :family_name, placeholder: "山田", autofocus: true, class: 'form_field' %>
       </td>
-      <td class="form_item">
-        <%= f.label :name,"名", class: 'label' %><br>
+      <td id="sp_form_name" class="form_item">
+        <%= f.label :name,"名", class: 'label', id: 'sp_label_name'%><br>
         <%= f.text_field :name, placeholder: "太郎", autofocus: true, class: 'form_field' %>
       </td>
     </tr>
@@ -17,8 +17,8 @@
         <%= f.text_field :kana_family_name, placeholder: "ヤマダ", autofocus: true, class: 'form_field' %>
       </td>
 
-      <td class="form_item">
-        <%= f.label :kana_name,"メイ", class: 'label' %><br>
+      <td id="sp_form_name" class="form_item">
+        <%= f.label :kana_name,"メイ", class: 'label', id: 'sp_label_name' %><br>
         <%= f.text_field :kana_name, placeholder: "タロウ", autofocus: true, class: 'form_field' %>
       </td>
     </tr>

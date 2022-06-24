@@ -1,7 +1,15 @@
 // Place all the styles related to the works controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+@import "./application";
+
+
+//フォーム画面
 .work_form_page {
+
+  width : 100%;
+
   h2 {
   padding-top: 10%;
   text-align: center;
@@ -16,10 +24,65 @@
       width: 30%;
     }
   }
+
+  @media (max-width: ($pc)) {
+    padding: 20px 0;
+  }
+
+  @media (max-width: ($sp)) {
+    text-align: center;
+  }
 }
 
 
 
+
+.add_fields {
+  text-decoration: none;
+  border: none;
+
+}
+
+.work_create_btn {
+  padding-top: 30px;
+  text-align: center;
+
+  @media (max-width: ($pc)) {
+    padding: 30px 0;
+  }
+}
+
+.personnel_forms {
+  width: 530px;
+
+  .append_link {
+    text-align: left;
+  }
+
+  @media (max-width: ($pc)) {
+    text-align: left;
+  }
+
+  @media (max-width: ($sp)) {
+    text-align: center;
+    padding: 30px 0;
+    width: 100%;
+
+    .append_link {
+    padding-left: 25px;
+    }
+  }
+
+}
+
+
+
+
+
+
+
+
+//showページ
 .work_show_page {
 
   width: 70%;
@@ -37,26 +100,19 @@
 
   .time_area {
     width: 600px;
+    padding-top: 20px;
 
     .time {
       padding-left: 20px;
     }
   }
+
+  @media (max-width: ($sp)) {
+
+    .time_area {
+      width: 100%;
+    }
+  }
 }
-
-.add_fields {
-  text-decoration: none;
-  border: none;
-
-}
-
-.work_create_btn {
-  padding: 30px 348px 50px;
-}
-
-.personnel_forms {
-  width: 530px;
-}
-
 
 

@@ -90,14 +90,14 @@
 }
 
 .select_form_field {
-    width: 380px;
+    width: 350px;
     height: 38px;
     margin-right: 20px;
     border:1px solid gray;
     border-radius: 5px;
 
     @media screen and (max-width: ($sp)) {
-    width: 250px;
+    width: 200px;
   }
 }
 

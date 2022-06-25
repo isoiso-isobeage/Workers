@@ -16,13 +16,11 @@
             <%= f.text_area :description, placeholder: "現場概要を入れてください", autofocus: true, class: 'form_field_big' %>
           </td>
         </tr>
-        <tr>
-          <td colspan=2>
-            <%= f.submit "変更", class: "btn btn-success"%>
-            <%=link_to '現場削除', site_path(@site), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-danger" %>
-          </td>
-        </tr>
       </table>
+      <div class="edit_site_btn">
+        <%= f.submit "変更", class: "btn btn-success"%>
+        <%=link_to '現場削除', site_path(@site), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-danger" %>
+      </div>
     <%end%>
   </div>
 </div>

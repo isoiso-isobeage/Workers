@@ -5,14 +5,16 @@
     <%=link_to user_path(notification.visitor), class: 'tab_content' do%>
 
       <div class="tab_flex">
+
         <div>
           <%=image_tag notification.visitor.get_profile_image, class: 'tab_user_profile_image' %>
         </div>
+
         <div class="tab_content_names">
           <h6><%= notification.visitor.get_full_name(notification.visitor) %>さんがあなたをフォローしました。</h6>
         </div>
-      </div>
 
+      </div>
 
     <%end%>
 
@@ -24,11 +26,12 @@
         <div>
           <%=image_tag notification.visitor.get_profile_image, class: 'tab_user_profile_image' %>
         </div>
+
         <div class="tab_content_names">
           <h6><%= notification.visitor.get_full_name(notification.visitor) %>さんがあなたを<%=notification.site.name %>に招待しました。</h6>
         </div>
-      </div>
 
+      </div>
 
     <%end%>
 
@@ -37,19 +40,26 @@
     <%=link_to site_work_path(notification.site, notification.work), class: 'tab_content' do%>
 
       <div class="tab_flex">
+
         <div>
           <%=image_tag notification.visitor.get_profile_image, class: 'tab_user_profile_image' %>
         </div>
+
         <div class="tab_content_names">
           <p>現場名:<%=notification.site.name%></p>
           <p><%=l notification.work.start_date, format: :short%>開始予定</p>
           <h6><%=notification.work.name %>の予定が更新されました。</h6>
         </div>
+
       </div>
 
     <%end%>
 
-
   <%end%>
 
+<%end%>
+
+
+<%if new_notifications.blank?%>
+  <h2 class="no_notification_message"><i class="fa-solid fa-bell"></i>通知はありません</h2>
 <%end%>

@@ -28,7 +28,8 @@
 
   <div class="personnel_forms">
     <p>予定人数入力</p>
-
+<%# pp site_users.pluck(:company_name).uniq %>
+<%# pp site_users.select(:company_name).distinct %>
     <%=f.fields_for :personnels do |personnel| %>
       <%=render 'personnels', site_users: site_users, f: personnel %>
     <%end%>

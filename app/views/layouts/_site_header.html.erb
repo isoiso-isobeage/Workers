@@ -1,9 +1,44 @@
-<li><%=link_to 'カレンダー', site_works_path(site) %></li>
+<li>
+  <%=link_to site_works_path(site) do %>
+    <i class="fa-solid fa-calendar"></i>カレンダー
+  <%end%>
+</li>
+
 <%if site.user_id == current_user.id %>
-  <li><%=link_to '予定作成', new_site_work_path(site) %></li>
-  <li><%=link_to '現場関係者', site_users_path(site) %></li>
-  <li><%=link_to '現場情報編集', edit_site_path(site)%></li>
+
+  <li>
+    <%=link_to new_site_work_path(site) do %>
+      <i class="fa-solid fa-circle-plus"></i>予定作成
+    <%end%>
+  </li>
+
+  <li>
+    <%=link_to site_users_path(site) do %>
+      <i class="fa-solid fa-helmet-safety"></i>現場関係者
+    <%end%>
+  </li>
+
+  <li>
+    <%=link_to edit_site_path(site) do %>
+      <i class="fa-solid fa-wrench"></i>現場情報編集
+    <%end%>
+  </li>
+
 <%end%>
-<li><%=link_to '通知', notifications_path %></li>
-<li><%=link_to 'Home', '/' %></li>
-<li><%=link_to 'Log Out', destroy_user_session_path, method: :delete %></li>
+      <li>
+        <%=link_to notifications_path do %>
+          <i class="fa-solid fa-bell"></i>通知
+        <%end%>
+      </li>
+
+      <li>
+        <%=link_to '/' do %>
+          <i class="fa-solid fa-house"></i>Home
+        <%end%>
+      </li>
+
+      <li>
+        <%=link_to destroy_user_session_path, method: :delete do %>
+          <i class="fa-solid fa-arrow-right-from-bracket"></i>Log Out
+        <%end%>
+      </li>

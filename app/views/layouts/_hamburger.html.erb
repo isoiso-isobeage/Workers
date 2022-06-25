@@ -4,19 +4,80 @@
       <%= render 'layouts/site_header', site: @site %>
     <!--ログイン時のナビゲーション-->
     <%elsif user_signed_in?%>
-      <li><%=link_to 'Profile', user_path(current_user) %></li>
-      <li><%=link_to '現場作成', new_site_path %></li>
-      <li><%=link_to '現場一覧', sites_path %></li>
-      <li><%=link_to 'ユーザー検索', search_path %></li>
-      <li><%=link_to 'Follow', user_follows_path(current_user) %></li>
-      <li><%=link_to '通知', notifications_path %></li>
-      <li><%=link_to 'Log Out', destroy_user_session_path, method: :delete %></li>
+     <li>
+        <%=link_to user_path(current_user) do %>
+          <i class="fa-solid fa-user"></i>Profile
+        <%end%>
+      </li>
+
+      <li>
+        <%=link_to new_site_path do %>
+          <i class="fa-solid fa-hammer"></i>現場作成
+        <%end%>
+      </li>
+
+      <li>
+        <%=link_to sites_path do %>
+          <i class="fa-solid fa-person-digging"></i>現場一覧
+        <%end%>
+      </li>
+
+      <li>
+        <%=link_to search_path do %>
+          <i class="fa-solid fa-magnifying-glass"></i>ユーザー検索
+        <%end%>
+      </li>
+
+      <li>
+        <%=link_to user_follows_path(current_user) do %>
+          <i class="fa-solid fa-users"></i>Follow
+        <%end%>
+      </li>
+
+      <li>
+        <%=link_to notifications_path do %>
+          <i class="fa-solid fa-bell"></i>通知
+        <%end%>
+      </li>
+
+      <li>
+        <%=link_to '/' do %>
+          <i class="fa-solid fa-house"></i>Home
+        <%end%>
+      </li>
+
+      <li>
+        <%=link_to destroy_user_session_path, method: :delete do %>
+          <i class="fa-solid fa-arrow-right-from-bracket"></i>Log Out
+        <%end%>
+      </li>
+
     <%else%>
     <!--ログイン前のナビゲーション-->
-      <li><%=link_to 'Home', '/' %></li>
-      <li><%=link_to 'About', home_about_path %></li>
-      <li><%=link_to 'Sign Up', new_user_registration_path %></li>
-      <li><%=link_to 'Log In', new_user_session_path %></li>
+      <li>
+        <%=link_to '/' do %>
+          <i class="fa-solid fa-house"></i>Home
+        <%end%>
+      </li>
+
+      <li>
+        <%=link_to home_about_path do %>
+          <i class="fa-solid fa-link"></i>About
+        <%end%>
+      </li>
+
+      <li>
+        <%=link_to new_user_registration_path do %>
+          <i class="fa-solid fa-user-plus"></i>Sign Up
+        <%end%>
+      </li>
+
+      <li>
+        <%=link_to new_user_session_path do %>
+          <i class="fa-solid fa-right-to-bracket"></i>Log In
+        <%end%>
+      </li>
+
     <%end%>
   </ul>
 </div>

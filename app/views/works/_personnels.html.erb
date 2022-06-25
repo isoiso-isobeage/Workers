@@ -1,6 +1,8 @@
-<div class="personnel_content">
-  <%= f.select :company_name, options_from_collection_for_select(site_users,:company_name, :company_name,), {}, {class: "select_form_field"} %>
-  <%= f.number_field :count, :min => 0,  class: "number_field" %><span>人</span>
+<div class="personnel_content nested-fields">
+  <!--site_users.select(:company_name).distinctで被っている名前を排除-->
+  <%=f.select :company_name, options_from_collection_for_select(site_users.select(:company_name).distinct, :company_name, :company_name), {}, {class: "select_form_field"} %>
+  <%=f.number_field :count, :min => 1,  class: "number_field" %><span>人</span>
+  <%=link_to_remove_association "削除", f, class: "btn btn-secondary btn-block" %>
 </div><br>
 
 

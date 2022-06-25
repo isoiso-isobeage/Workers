@@ -61,6 +61,11 @@ class WorksController < ApplicationController
     if @site.user_id == current_user.id
       @work = Work.find(params[:id])
       @site_users = @site.users
+      @work_personnels = @work.personnels
+
+      # jsにデータを渡す
+      @work_company_names = []
+      gon.names = @work.personnels.pluck(:company_name)
       render 'edit'
     else
       redirect_to '/'

@@ -11,6 +11,8 @@ class NotificationsController < ApplicationController
   def update
     @notification = Notification.find(params[:id])
     @notification.update(checked: true)
+
+    # 選択した通知によって画面遷移先を変更
     if @notification.action == 'follow'
       redirect_to user_path(@notification.visitor)
     elsif @notification.action == 'site_user'
@@ -18,6 +20,18 @@ class NotificationsController < ApplicationController
     else
       redirect_to site_work_path(@notification.site, @notification.work)
     end
+  end
+
+
+  # 全ての通知を確認済みにする
+  def update_all
+    new_notifications = current_user.passive_notifications.where(checked: false)
+    new_notifications.each do |notification|
+      notification.update(checked: true)
+    end
+
+    redirect_to request.referer
+
   end
 
 

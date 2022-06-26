@@ -38,3 +38,26 @@
 
 
 }
+
+.site_index_message {
+  padding-top: 50px;
+  text-align: center;
+}
+
+
+
+
+#edit_link {
+  color: black;
+}
+
+.not_edit_message {
+  text-align: center;
+  padding-top: 30px;
+  color: red;
+  font-weight: bold;
+
+  @media screen and (max-width: ($sp)) {
+    font-size: 15px;
+  }
+}

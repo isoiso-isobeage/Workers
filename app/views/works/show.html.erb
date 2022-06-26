@@ -18,7 +18,7 @@
   <%if @personnels.blank?%>
     <h2>⚠️予定人数が設定されていません</h2>
   <%else%>
-    <table class="table">
+    <table class="table text-center table-bordered">
       <thead class="table-dark">
         <th>会社名</th>
         <th>予定人数</th>
@@ -33,11 +33,11 @@
       </tbody>
     </table>
   <%end%>
-  <%if @site.user_id == current_user.id%>
-    <div class="work_btn_area">
-      <div>
-        <%=link_to '作業内容を編集', edit_site_work_path(@site, @work)%>
-      </div>
+  <%if @site.user_id == current_user.id && @work.work_started?(@work)%>
+    <div>
+      <%=link_to '作業内容を編集', edit_site_work_path(@site, @work), id: "edit_link"%>
     </div>
+  <%else%>
+    <h4 class="not_edit_message"><i class="fa-solid fa-lock"></i>2日過ぎている為、編集できません</h4>
   <%end%>
 </div>

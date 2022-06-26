@@ -36,6 +36,9 @@
 
       <li>
         <%=link_to notifications_path do %>
+        　<% if unchecked_notifications.any? %>
+            <i class="fa-solid fa-circle check_notifications_mark" style="color: gold;"></i>
+          <% end %>
           <i class="fa-solid fa-bell"></i>通知
         <%end%>
       </li>

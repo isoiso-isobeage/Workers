@@ -20,23 +20,11 @@ class UsersController < ApplicationController
   def update
     @user =User.find(params[:id])
     if @user.update(user_params)
-      redirect_to user_path(@user)
+      redirect_to user_path(@user), notice: '更新が完了しました'
     else
-      render 'edit'
+      render 'edit', alert: '更新することができませんでした'
     end
   end
-
-
-  def search
-    @users = User.all
-    if @user = User.find_by(email: params[:search_email])
-      render 'search'
-    else
-      render 'search'
-    end
-  end
-
-
 
   private
 

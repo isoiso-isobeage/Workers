@@ -86,7 +86,7 @@
 
   h2 {
     text-align: center;
-    padding: 10% 0;
+    padding: 10% 0 5%;
   }
 
   .content_area {
@@ -96,11 +96,7 @@
 
   .time_area {
     width: 600px;
-    padding-top: 20px;
-
-    .time {
-      padding-left: 20px;
-    }
+    padding: 20px 0;
   }
 
   @media (max-width: ($sp)) {

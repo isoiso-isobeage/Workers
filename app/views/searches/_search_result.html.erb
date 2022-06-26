@@ -1,0 +1,15 @@
+<div class="search_area">
+  <%=form_with url: search_result_path, local: false, method: :get do |f| %>
+    <%= f.label :search_email,"検索フォーム" %><br>
+    <%=f.email_field :search_email, :size =>"30", placeholder: "メールアドレスを入力してください", class: "search_field" %>
+    <%=f.submit '検索', class: "btn btn-success"%>
+  <%end%>
+</div>
+
+<%if user.blank?%>
+  <h4 class="not_search"><i class="fa-solid fa-user-xmark"></i>ユーザーは見つかりませんでした</h4>
+<%else%>
+  <div class="search_result">
+    <%= render 'users/show', user: user %>
+  </div>
+<%end%>

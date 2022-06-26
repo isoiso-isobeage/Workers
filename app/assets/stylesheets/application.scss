@@ -74,6 +74,23 @@ section {
 
 
 
+// フラッシュメッセージ
+.flash_message {
+  position: absolute;
+  top: 10px;
+  left: 20px;
+
+  #notice {
+  color: green;
+  }
+
+  #alert {
+    color: red;
+  }
+}
+
+
+
 
 
 

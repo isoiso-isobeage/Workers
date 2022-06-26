@@ -17,7 +17,8 @@ Rails.application.routes.draw do
   end
 
   #ユーザー検索関係
-  get 'search' => 'users#search', as: 'search'
+  get 'search' => 'searches#search', as: 'search'
+  get 'search_result' => 'searches#search_result', as: 'search_result'
 
   # 現場関連
   resources :sites, except: :show do

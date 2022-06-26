@@ -23,4 +23,10 @@ class Work < ApplicationRecord
   def start_check
     errors.add(:start_date, "は現在の日時より遅い時間を選択してください") if self.start_date < Time.now
   end
+
+# 作業の開始日時が2日過ぎているかどうか
+  def work_started?(work)
+    work.start_date > Time.now - 2.day
+  end
+
 end

@@ -16,15 +16,15 @@ class WorksController < ApplicationController
 
 
   def create
-    @site = Site.find(params[:site_id])
     @work = Work.new(work_params)
+    @site = Site.find(params[:site_id])
     @site_users = @site.users
 
     if !duplicate_company? && @work.save
       current_user.create_notification_work(current_user, @site_users, @site, @work)
-      redirect_to site_work_path(@site, @work)
+      redirect_to site_work_path(@site, @work), notice: '予定を作成しました'
     else
-      render 'new'
+      render 'new', alert: '予定を作成できませんでした'
     end
 
   end
@@ -58,8 +58,8 @@ class WorksController < ApplicationController
 
   def edit
     @site = Site.find(params[:site_id])
-    if @site.user_id == current_user.id
-      @work = Work.find(params[:id])
+    @work = Work.find(params[:id])
+    if @site.user_id == current_user.id && @work.work_started?(@work)
       @site_users = @site.users
       @work_personnels = @work.personnels
 
@@ -79,9 +79,10 @@ class WorksController < ApplicationController
     @work = Work.find(params[:id])
     @site = @work.site
     # 現場を作成したユーザーのみ変更可能
-    if @site.user_id == current_user.id
+    if @site.user_id == current_user.id && @work.work_started?(@work)
       @work.update(start_date: params[:start_date], end_date: params[:end_date])
     end
+
   end
 
 
@@ -90,7 +91,7 @@ class WorksController < ApplicationController
     @site = Site.find(@work.site_id)
     @site_users = @site.users
     # 現場を作成したユーザーのみ変更可能
-    if @site.user_id == current_user.id && !duplicate_company? && @work.update(work_params)
+    if @site.user_id == current_user.id && !duplicate_company? && @work.work_started?(@work) && @work.update(work_params)
       current_user.create_notification_work(current_user, @site_users, @site, @work)
       redirect_to site_work_path(@site, @work)
     else
@@ -109,11 +110,17 @@ class WorksController < ApplicationController
 
   private
 
+
   def work_params
     params.require(:work).permit(
       :site_id, :name, :content, :start_date, :end_date,
       personnels_attributes: [:id, :work_id, :company_name, :count, :_destroy])
   end
+
+  def site_owner?
+    @site.user_id == current_user.id
+  end
+
 
   # 送られてきた会社名に同じのものがあるかどうか
   def duplicate_company?
@@ -122,6 +129,7 @@ class WorksController < ApplicationController
                                        .group_by {|e|e}.select {|k,v| v.size > 1}
                                        .any? {|k, v|v.size>1}
   end
+
 
   # 現場ユーザーかどうか
   def site_users?(site_users, user)

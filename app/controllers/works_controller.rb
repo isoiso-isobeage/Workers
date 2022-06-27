@@ -92,8 +92,16 @@ class WorksController < ApplicationController
     @site = Site.find(@work.site_id)
     @site_users = @site.users
     # 現場を作成したユーザーのみ変更可能
+    result = false
     if @site.user_id == current_user.id && !duplicate_company? && @work.work_started?(@work)
-      @work.update(work_params)
+      if @work.update(work_params)
+        result = true
+      end
+    else
+      result = false
+    end
+
+    if result
       current_user.create_notification_work(current_user, @site_users, @site, @work)
       redirect_to site_work_path(@site, @work), notice: '予定を更新しました'
     else
@@ -138,6 +146,10 @@ class WorksController < ApplicationController
   # 現場ユーザーかどうか
   def site_users?(site_users, user)
     site_users.include?(user)
+  end
+
+  def start_finish_check(work)
+    work.start_date > work.end_date
   end
 
 

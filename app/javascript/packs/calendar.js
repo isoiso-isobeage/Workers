@@ -3,7 +3,7 @@ import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import listPlugin from '@fullcalendar/list';
 import interactionPlugin from '@fullcalendar/interaction';
-
+var event_default = new Date();
 $(document).ready(function() {
   const calendarEl = document.getElementById('calendar');
 
@@ -73,6 +73,10 @@ $(document).ready(function() {
     //     });
     // },
 
+    eventDragStart: function(info){
+      event_default = info.event.start;
+    },
+
 
     //表示された予定をクリックしたときのイベント
     eventClick: function(info){
@@ -80,6 +84,7 @@ $(document).ready(function() {
       // 選択したイベントのIDを取得
       const id = info.event.id;
       const site_id = info.event._def.extendedProps.site_id;
+
 
       $.ajax({
         type: 'GET', // HTTPメソッド
@@ -96,19 +101,15 @@ $(document).ready(function() {
       const end = info.event.end;
 
       // 日本時間を取得
-      const date = new Date().toLocaleString({ timeZone: 'Asia/Tokyo' });
-      //日本時間と比較するために用意
-      const jstart = start.toLocaleString();
+      const date = new Date();
+      // //日本時間と比較するために用意
+      // const jstart = start.toLocaleString();
 
       // authenticity_token.valueを取得するために定義
       const form = document.forms.event;
 
-      console.log(id);
-      console.log(jstart);
-      console.log(date);
-
-
-
+      let dateTime = new Date(date.setDate(date.getDate() - 2));
+      console.log(dateTime);
 
       $.ajax({
         type: 'patch',
@@ -117,13 +118,12 @@ $(document).ready(function() {
         dataType: 'json'
       }).done(function(){
         // 開始日時が現在時刻より遅ければリロード
-        if(jstart < date) {
+        if(start < date || event_default < dateTime) {
           location.reload();
         }
       }).fail(function (result){
         // 失敗処理
         alert("データを更新できません");
-        location.reload();
         });
       calendar.render();
     },

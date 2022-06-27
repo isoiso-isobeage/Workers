@@ -1,0 +1,26 @@
+<div class="flash_message">
+  <p id="notice"><%= notice %></p>
+  <p id="alert"><%= alert %></p>
+</div>
+<div class="follow_page">
+
+  <ul class="tab-menu">
+    <li><%=link_to '現場ユーザー', "#tab1", id: 'active' %></li>
+    <li><%=link_to 'ユーザー追加', "#tab2", id: '' %></li>
+  </ul>
+
+  <div class="tab-contents">
+    <div id="tab1" class="tab">
+      <%= render 'site_users', site_users: site_users, site_user: site_user, site: site %>
+    </div>
+
+    <div id="tab2" class="tab">
+      <%= render 'add_users', add_users: add_users, site_user: site_user, site: site %>
+    </div>
+
+  </div>
+
+</div>
+
+<!--JavaScript読み込み-->
+<%= javascript_pack_tag 'site_users/tab' %>

@@ -13,7 +13,7 @@
       <!--削除用フォーム-->
       <div>
         <%=form_with model: site_user, url: site_user_destroy_path(site, user), local: true, method: :delete do |f| %>
-          <%= f.submit "削除する", class: 'btn btn-success tab_btn'%>
+          <%= f.submit "削除", class: 'btn btn-danger tab_btn'%>
         <%end%>
       </div>
     </div>

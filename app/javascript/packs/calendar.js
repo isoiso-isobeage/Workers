@@ -21,7 +21,6 @@ $(document).ready(function() {
 
 
     locale: 'ja',
-    timeZone: 'Asia/Tokyo',
     firstDay: 1,
     expandRows: true,
     stickyHeaderDates: true,
@@ -96,12 +95,18 @@ $(document).ready(function() {
       const start = info.event.start;
       const end = info.event.end;
 
+      // 日本時間を取得
+      const date = new Date().toLocaleString({ timeZone: 'Asia/Tokyo' });
+      //日本時間と比較するために用意
+      const jstart = start.toLocaleString();
+
       // authenticity_token.valueを取得するために定義
       const form = document.forms.event;
 
       console.log(id);
-      console.log(start);
-      console.log(info.event);
+      console.log(jstart);
+      console.log(date);
+
 
 
 
@@ -110,6 +115,11 @@ $(document).ready(function() {
         url: '/sites/' + site_id + '/works/' + id,
         data: { id: id, start_date: start, end_date: end, authenticity_token: form.authenticity_token.value },
         dataType: 'json'
+      }).done(function(){
+        // 開始日時が現在時刻より遅ければリロード
+        if(jstart < date) {
+          location.reload();
+        }
       }).fail(function (result){
         // 失敗処理
         alert("データを更新できません");

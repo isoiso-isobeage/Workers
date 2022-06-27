@@ -1,10 +1,8 @@
 <% my_sites.each do |site| %>
   <%=link_to site_works_path(site), class: 'tab_content' do%>
-    <div class="tab_flex">
-      <div class="tab_content_names">
-        <h2><%= site.name %></h2>
-        <p><%= site.description %></p>
-      </div>
+    <div id="site_names" class="tab_content_names">
+      <h2><%= site.name %></h2>
+      <p><%= site.description %></p>
     </div>
   <%end%>
 <%end%>

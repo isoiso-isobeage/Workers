@@ -22,7 +22,7 @@ class UsersController < ApplicationController
     if @user.update(user_params)
       redirect_to user_path(@user), notice: '更新が完了しました'
     else
-      render 'edit', alert: '更新することができませんでした'
+      render 'edit'
     end
   end
 

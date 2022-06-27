@@ -34,7 +34,6 @@ class SiteUsersController < ApplicationController
 
   def site_user_destroy
     @site = Site.find(params[:site_id])
-    @site_users = @site.users
     SiteUser.find_by(site_id: @site, user_id: params[:user_id]).destroy
     redirect_to request.referer
 

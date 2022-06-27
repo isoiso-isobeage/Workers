@@ -9,11 +9,13 @@ class SitesController < ApplicationController
   def create
     @site = Site.new(site_params)
     @site.user_id = current_user.id
+
     if @site.save
       redirect_to site_works_path(@site)
     else
       render 'new'
     end
+
   end
 
 
@@ -52,7 +54,7 @@ class SitesController < ApplicationController
   private
 
   def site_params
-    params.require(:site).permit(:name, :description)
+    params.require(:site).permit(:name, :description, :user_id)
   end
 
 end

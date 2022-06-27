@@ -4,6 +4,13 @@
 <!--authenticity_token.valueを取得するために用意-->
 <%=form_with model: @work, id: "event" %>
 
+<!--レスポンシブ用ボタン-->
+<div class="index_new_work_btn">
+  <%=link_to new_site_work_path(@site) do %>
+    <i class="fa-solid fa-square-plus"></i>
+  <%end%>
+</div>
+
 <%= javascript_pack_tag 'calendar' %>
 
 

@@ -71,9 +71,13 @@
     border:1px solid gray;
     border-radius: 5px;
 
+    @media screen and (max-width: ($pc)) {
+    height: 50px;
+    }
+
     @media screen and (max-width: ($sp)) {
     width: 50px;
-    font-size: 10px;
+    font-size: 14px;
     }
 }
 

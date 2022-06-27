@@ -56,7 +56,7 @@
       }
       p {
         margin: 0;
-        font-size: 25px;
+        font-size: 20px;
       }
     }
   }
@@ -87,7 +87,7 @@
       }
       p {
         text-align: left;
-        padding-left: 50px;
+        padding-left: 65px;
         font-size: 15px;
 
         &:first-child { margin-top: 30px; }
@@ -100,23 +100,13 @@
 
 
 
-
-
-
-
-
 // showページボタン
 .user_btn_area {
   padding-top: 100px;
   text-align: center;
 
   @media screen and (max-width: ($tab)) {
-    padding-top: 50px;
+    padding-top: 0;
   }
 }
 
-
-// editページ関連
-.edit_user_page {
-  height: 100vh;
-}

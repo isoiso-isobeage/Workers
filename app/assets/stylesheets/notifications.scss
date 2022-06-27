@@ -1,7 +1,7 @@
 // Place all the styles related to the notifications controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
-
+@import "./application";
 
 #check_notifications_btn {
   position: fixed;
@@ -11,8 +11,10 @@
   color: green;
   z-index: 8;
 
-  :hover {
-    color: red;
+  @media (max-width: ($pc)) {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
   }
 }
 

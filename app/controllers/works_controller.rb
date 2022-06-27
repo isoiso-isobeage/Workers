@@ -24,7 +24,8 @@ class WorksController < ApplicationController
       current_user.create_notification_work(current_user, @site_users, @site, @work)
       redirect_to site_work_path(@site, @work), notice: '予定を作成しました'
     else
-      render 'new', alert: '予定を作成できませんでした'
+      flash.now[:alert] = '予定を作成できませんでした'
+      render 'new'
     end
 
   end
@@ -91,10 +92,12 @@ class WorksController < ApplicationController
     @site = Site.find(@work.site_id)
     @site_users = @site.users
     # 現場を作成したユーザーのみ変更可能
-    if @site.user_id == current_user.id && !duplicate_company? && @work.work_started?(@work) && @work.update(work_params)
+    if @site.user_id == current_user.id && !duplicate_company? && @work.work_started?(@work)
+      @work.update(work_params)
       current_user.create_notification_work(current_user, @site_users, @site, @work)
-      redirect_to site_work_path(@site, @work)
+      redirect_to site_work_path(@site, @work), notice: '予定を更新しました'
     else
+      flash.now[:alert] = '予定を更新できませんでした'
       render 'edit'
     end
   end
@@ -117,8 +120,9 @@ class WorksController < ApplicationController
       personnels_attributes: [:id, :work_id, :company_name, :count, :_destroy])
   end
 
-  def site_owner?
-    @site.user_id == current_user.id
+  # 現場作成者かどうか
+  def site_owner?(site)
+    site.user_id == current_user.id
   end
 
 
@@ -135,5 +139,6 @@ class WorksController < ApplicationController
   def site_users?(site_users, user)
     site_users.include?(user)
   end
+
 
 end

@@ -1,3 +1,8 @@
+<div class="flash_message">
+  <p id="notice"><%= notice %></p>
+  <p id="alert"><%= alert %></p>
+</div>
+
 <div class="work_show_page">
   <h2><%=@work.name %></h2>
 
@@ -37,7 +42,8 @@
     <div>
       <%=link_to '作業内容を編集', edit_site_work_path(@site, @work), id: "edit_link"%>
     </div>
-  <%else%>
-    <h4 class="not_edit_message"><i class="fa-solid fa-lock"></i>2日過ぎている為、編集できません</h4>
+  <%elsif @site.user_id == current_user.id%>
+    <h4 class="not_edit_message"><i class="fa-solid fa-lock"></i>編集できません</h4>
   <%end%>
+
 </div>

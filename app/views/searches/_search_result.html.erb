@@ -9,7 +9,7 @@
 <%if user.blank?%>
   <h4 class="not_search"><i class="fa-solid fa-user-xmark"></i>ユーザーは見つかりませんでした</h4>
 <%else%>
-  <div class="search_result">
+  <div class="user_area">
     <%= render 'users/show', user: user %>
   </div>
 <%end%>

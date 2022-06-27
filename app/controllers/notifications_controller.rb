@@ -21,6 +21,7 @@ class NotificationsController < ApplicationController
       else
         redirect_to site_work_path(@notification.site, @notification.work)
       end
+
     else
       redirect_to request.referer
     end

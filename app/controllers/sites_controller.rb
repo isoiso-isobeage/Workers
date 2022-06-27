@@ -13,6 +13,8 @@ class SitesController < ApplicationController
     if @site.save
       redirect_to site_works_path(@site)
     else
+      @site = nil
+      flash.now[:alert] = '作成できませんでした'
       render 'new'
     end
 

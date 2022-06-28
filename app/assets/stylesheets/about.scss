@@ -1,0 +1,58 @@
+@import "./application";
+
+.about_page {
+  text-align: left;
+  width: 80%;
+  margin: 0 auto;
+  padding-top: 40px;
+
+  h1 {
+    font-weight: bold;
+  }
+
+  .explanation_area {
+    padding: 50px 0;
+  }
+
+  h2 {
+    padding-bottom: 30px;
+  }
+
+  h4 {
+    padding-bottom: 40px;
+  }
+
+  .photo_area {
+    padding-bottom: 40px;
+  }
+
+  .photo {
+    height: 330px;
+    width: 600px;
+    border: 1px solid $select-color;
+  }
+
+  .photo_flex_area {
+    display: flex;
+    padding-bottom: 40px;
+  }
+
+  .photo_flex {
+    width: 40%;
+  }
+
+  .flex_photo {
+    height: 200px;
+    width: 350px;
+    margin-right: 10px;
+  }
+
+  @media (max-width: ($sp)) {
+    .photo {
+    height: 150px;
+    width: 300px;
+    border: 1px solid $select-color;
+    }
+  }
+
+}

@@ -9,7 +9,7 @@ class NotificationsController < ApplicationController
   end
 
   def update
-    if @notification = Notification.find(params[:id])
+    if @notification = Notification.find_by(id: params[:id])
 
       @notification.update(checked: true)
 

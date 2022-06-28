@@ -16,7 +16,7 @@
         <%=form_with model: site_user, url: site_users_path, local: true, method: :post do |f| %>
         　<%=f.hidden_field :user_id, :value => user.id %>
         　<%=f.hidden_field :site_id, :value => site.id %>
-      　<%= f.submit "追加する", class: 'btn btn-success tab_btn'%>
+      　<%= f.submit "追加", class: 'btn btn-success tab_btn'%>
       <%end%>
       </div>
     </div>

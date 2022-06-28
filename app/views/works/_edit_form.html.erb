@@ -15,13 +15,13 @@
     <tr>
       <td class="form_item" colspan=2>
         <%= f.label :start_date,"開始日時 (*必須)", class: 'label' %><br>
-        <%= f.datetime_select :start_date, {default: Date.today + 0.hours + 00.minutes, minute_step: 60, use_month_numbers:true}, class: 'time_form_field' %>
+        <%= f.datetime_select :start_date, {default: Date.today}, class: 'time_form_field' %>
       </td>
     </tr>
     <tr>
       <td class="form_item" colspan=2>
         <%= f.label :end_date,"終了日時  (*必須)", class: 'label' %><br>
-        <%= f.datetime_select :end_date, {default: Date.today + 0.hours + 00.minutes, minute_step: 60, use_month_numbers:true}, class: 'time_form_field' %>
+        <%= f.datetime_select :end_date, {default: Date.today}, class: 'time_form_field' %>
       </td>
     </tr>
   </table>

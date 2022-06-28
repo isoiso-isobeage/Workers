@@ -3,3 +3,89 @@
 // You can use Sass (SCSS) here: https://sass-lang.com/
 @import "./application";
 
+.top_page {
+  background-image: url('top.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: right;
+  width: 100%;
+  height: 100vh;
+  text-align: center;
+
+  p {
+    font-size: 100px;
+    font-weight: bold;
+    color: #FFFF00;
+    display: inline-block;
+    position : absolute;
+    top: 15%;
+    left: 13%;
+  }
+
+  h1 {
+    font-size: 100px;
+    font-weight: bold;
+    color: green;
+    display: inline-block;
+    position : absolute;
+    top: 45%;
+    right: 13%;
+  }
+
+  @media (max-width: ($pc)) {
+    background-image: url('tab-top.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+
+    p {
+    font-size: 70px;
+    font-weight: bold;
+    color: #FFFF00;
+    display: inline-block;
+    position : absolute;
+    top: 20%;
+    left: 8%;
+  }
+
+
+    h1 {
+    font-size: 70px;
+    font-weight: bold;
+    color: green;
+    display: inline-block;
+    position : absolute;
+    top: 45%;
+    right: 22%;
+    }
+  }
+
+  @media (max-width: ($sp)) {
+    background-image: url('sp-top.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: left;
+
+    p {
+    font-size: 40px;
+    font-weight: bold;
+    color: #FFFF00;
+    display: inline-block;
+    position : absolute;
+    top: 20%;
+    left: 8%;
+  }
+
+
+    h1 {
+    font-size: 40px;
+    font-weight: bold;
+    color: green;
+    display: inline-block;
+    position : absolute;
+    top: 45%;
+    right: 20%;
+    }
+  }
+}
+

@@ -1,3 +1,7 @@
+<div class="flash_message">
+  <p id="notice"><%= notice %></p>
+  <p id="alert"><%= alert %></p>
+</div>
 <h2 class="calendar_site_name"><%=@site.name %></h2>
 
 <div id='calendar'></div>
@@ -5,11 +9,13 @@
 <%=form_with model: @work, id: "event" %>
 
 <!--レスポンシブ用ボタン-->
-<div class="index_new_work_btn">
-  <%=link_to new_site_work_path(@site) do %>
-    <i class="fa-solid fa-square-plus"></i>
-  <%end%>
-</div>
+<%if @site.user_id == current_user.id%>
+  <div class="index_new_work_btn">
+    <%=link_to new_site_work_path(@site) do %>
+      <i class="fa-solid fa-square-plus"></i>
+    <%end%>
+  </div>
+<%end%>
 
 <%= javascript_pack_tag 'calendar' %>
 

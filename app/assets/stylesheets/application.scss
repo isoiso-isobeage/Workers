@@ -47,8 +47,6 @@ input:focus     { outline:none; }
   width: 60%;
   margin: 0 30%;
   background: #FFFFFF;
-  border-left: solid 2px $select-color;
-  border-right: solid 2px $select-color;
   position: relative;
 
   @media (max-width: ($pc)) {

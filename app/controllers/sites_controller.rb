@@ -11,7 +11,7 @@ class SitesController < ApplicationController
     @site.user_id = current_user.id
 
     if @site.save
-      redirect_to site_works_path(@site)
+      redirect_to site_works_path(@site), notice: '新規現場を作成しました'
     else
       @site = nil
       flash.now[:alert] = '作成できませんでした'
@@ -40,8 +40,9 @@ class SitesController < ApplicationController
   def update
     @site = Site.find(params[:id])
     if @site.update(site_params)
-      redirect_to site_works_path(@site)
+      redirect_to site_works_path(@site), notice: '更新しました'
     else
+      flash.now[:alert] = '更新できませんでした'
       render 'edit'
     end
   end
@@ -50,7 +51,7 @@ class SitesController < ApplicationController
   def destroy
     @site = Site.find_by(params[:id])
     @site.destroy
-    redirect_to sites_path
+    redirect_to sites_path, notice: '削除しました'
   end
 
   private

@@ -32,7 +32,7 @@ ja:
         company_name: 会社名
         phone_number: 電話番号
     models:
-      user: ユーザ
+      user: ユーザー
   devise:
     confirmations:
       confirmed: アカウントを登録しました。

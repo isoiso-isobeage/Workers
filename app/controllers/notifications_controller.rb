@@ -8,6 +8,7 @@ class NotificationsController < ApplicationController
     @checked_notifications = current_user.passive_notifications.where(checked: true).page(params[:page]).per(20)
   end
 
+# 　新規通知を確認済みにする
   def update
     if @notification = Notification.find_by(id: params[:id])
 

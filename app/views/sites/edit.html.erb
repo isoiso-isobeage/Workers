@@ -6,13 +6,13 @@
       <table class="form_items">
         <tr>
           <td class="form_item">
-            <%= f.label :name,"現場名", class: 'label' %><br>
+            <%= f.label :name,"現場名(*必須)", class: 'label' %><br>
             <%= f.text_field :name, placeholder: "現場名を入れてください", autofocus: true, class: 'form_field_long' %>
           </td>
         </tr>
         <tr>
           <td class="form_item">
-            <%= f.label :description,"現場概要", class: 'label' %><br>
+            <%= f.label :description,"現場概要(任意)", class: 'label' %><br>
             <%= f.text_area :description, placeholder: "現場概要を入れてください", autofocus: true, class: 'form_field_big' %>
           </td>
         </tr>

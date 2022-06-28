@@ -115,7 +115,7 @@ class WorksController < ApplicationController
     @work = Work.find(params[:id])
     @site = @work.site_id
     @work.destroy
-    redirect_to site_works_path(@site)
+    redirect_to site_works_path(@site), notice: '予定を削除しました'
   end
 
 
@@ -148,9 +148,6 @@ class WorksController < ApplicationController
     site_users.include?(user)
   end
 
-  def start_finish_check(work)
-    work.start_date > work.end_date
-  end
 
 
 end

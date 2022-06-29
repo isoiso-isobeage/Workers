@@ -79,9 +79,17 @@ class WorksController < ApplicationController
   def update
     @work = Work.find(params[:id])
     @site = @work.site
+    @site_users = @site.users
+    result = false
     # 現場を作成したユーザーのみ変更可能
     if @site.user_id == current_user.id && @work.work_started?(@work)
-      @work.update(start_date: params[:start_date], end_date: params[:end_date])
+      if @work.update(start_date: params[:start_date], end_date: params[:end_date])
+        result = true
+      end
+    end
+
+    if result
+      current_user.create_notification_work(current_user, @site_users, @site, @work)
     end
 
   end

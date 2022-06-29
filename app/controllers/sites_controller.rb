@@ -49,7 +49,7 @@ class SitesController < ApplicationController
 
 
   def destroy
-    @site = Site.find_by(params[:id])
+    @site = Site.find(params[:id])
     @site.destroy
     redirect_to sites_path, notice: '削除しました'
   end

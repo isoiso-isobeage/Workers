@@ -9,7 +9,7 @@ class Notification < ApplicationRecord
 	belongs_to :visited, class_name: 'User', foreign_key: 'visited_id', optional: true
 
 
-  enum action: { follow: 0, site_user: 1, work: 2 }
+  enum action: { follow: 0, site_user: 1, create_work: 2, update_work: 3 }
 
 
 end

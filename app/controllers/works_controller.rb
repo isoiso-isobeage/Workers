@@ -21,7 +21,7 @@ class WorksController < ApplicationController
     @site_users = @site.users
 
     if !duplicate_company? && @work.save
-      current_user.create_notification_work(current_user, @site_users, @site, @work)
+      current_user.create_notification_create_work(current_user, @site_users, @site, @work)
       redirect_to site_work_path(@site, @work), notice: '予定を作成しました'
     else
       flash.now[:alert] = '予定を作成できませんでした'
@@ -89,7 +89,7 @@ class WorksController < ApplicationController
     end
 
     if result
-      current_user.create_notification_work(current_user, @site_users, @site, @work)
+      current_user.create_notification_update_work(current_user, @site_users, @site, @work)
     end
 
   end
@@ -110,7 +110,7 @@ class WorksController < ApplicationController
     end
 
     if result
-      current_user.create_notification_work(current_user, @site_users, @site, @work)
+      current_user.create_notification_update_work(current_user, @site_users, @site, @work)
       redirect_to site_work_path(@site, @work), notice: '予定を更新しました'
     else
       flash.now[:alert] = '予定を更新できませんでした'

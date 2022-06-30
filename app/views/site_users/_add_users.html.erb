@@ -1,25 +1,24 @@
 <% add_users.each do |user| %>
   <%=link_to user_path(user), class: 'tab_content' do%>
 
-    <div class="tab_flex">
-      <div>
-        <%= image_tag user.get_profile_image, class: 'tab_user_profile_image' %>
-      </div>
-
-      <div class="tab_content_names">
-        <h2><%= user.get_full_name(user) %></h2>
-        <p><%= user.company_name %></p>
-      </div>
-
-      <!--追加用フォーム-->
-      <div>
-        <%=form_with model: site_user, url: site_users_path, local: true, method: :post do |f| %>
-        　<%=f.hidden_field :user_id, :value => user.id %>
-        　<%=f.hidden_field :site_id, :value => site.id %>
-      　<%= f.submit "追加", class: 'btn btn-success tab_btn'%>
-      <%end%>
-      </div>
+    <div>
+      <%= image_tag user.get_profile_image, class: 'tab_user_profile_image' %>
     </div>
+
+    <div class="tab_content_names">
+      <h2><%= user.get_full_name(user) %></h2>
+      <p><%= user.company_name %></p>
+    </div>
+
+    <!--追加用フォーム-->
+    <div>
+      <%=form_with model: site_user, url: site_users_path, local: true, method: :post do |f| %>
+      　<%=f.hidden_field :user_id, :value => user.id %>
+      　<%=f.hidden_field :site_id, :value => site.id %>
+    　<%= f.submit "追加", class: 'btn btn-success tab_btn'%>
+    <%end%>
+    </div>
+
 
 
 

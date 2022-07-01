@@ -1,5 +1,5 @@
 <% site_users.each do |user| %>
-  <%=link_to user_path(user), class: 'tab_content' do%>
+  <%=link_to user_path(user), class: 'site_users_tab_content' do%>
 
     <div>
       <%= image_tag user.get_profile_image, class: 'tab_user_profile_image' %>

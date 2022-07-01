@@ -2,7 +2,7 @@
 
   <%case notification.action when 'follow'%>
 
-    <%=link_to notification_path(notification), method: :patch, class: 'tab_content' do %>
+    <%=link_to notification_path(notification), method: :patch, class: 'notification_tab_content' do %>
       <div>
         <%=image_tag notification.visitor.get_profile_image, class: 'tab_user_profile_image' %>
       </div>
@@ -14,7 +14,7 @@
 
   <%when 'site_user'%>
 
-    <%=link_to notification_path(notification), method: :patch, class: 'tab_content' do %>
+    <%=link_to notification_path(notification), method: :patch, class: 'notification_tab_content' do %>
 
       <div>
         <%=image_tag notification.visitor.get_profile_image, class: 'tab_user_profile_image' %>
@@ -28,13 +28,14 @@
 
   <%when 'create_work'%>
 
-    <%=link_to notification_path(notification), method: :patch, class: 'tab_content' do %>
+    <%=link_to notification_path(notification), method: :patch, class: 'notification_tab_content' do %>
       <div>
         <%=image_tag notification.visitor.get_profile_image, class: 'tab_user_profile_image' %>
       </div>
 
       <div class="tab_content_names">
-        <p>現場名:<%=notification.site.name%></p>
+        <p>現場名</p>
+        <p><%=notification.site.name%></p>
         <p><%=l notification.work.start_date, format: :short%>開始予定</p>
         <h6><%=notification.work.name %>の予定が作成されました。</h6>
       </div>
@@ -42,13 +43,14 @@
 
     <%when 'update_work'%>
 
-    <%=link_to notification_path(notification), method: :patch, class: 'tab_content' do %>
+    <%=link_to notification_path(notification), method: :patch, class: 'notification_tab_content' do %>
       <div>
         <%=image_tag notification.visitor.get_profile_image, class: 'tab_user_profile_image' %>
       </div>
 
       <div class="tab_content_names">
-        <p>現場名:<%=notification.site.name%></p>
+        <p>現場名</p>
+        <p><%=notification.site.name%></p>
         <p><%=l notification.work.start_date, format: :short%>開始予定</p>
         <h6><%=notification.work.name %>の予定が更新されました。</h6>
       </div>

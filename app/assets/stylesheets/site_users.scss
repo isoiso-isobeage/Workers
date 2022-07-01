@@ -1,8 +1,111 @@
 // Place all the styles related to the site_users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+@import "./application";
+
 // ページ全体
 .site_users_page {
   width: 100%;
   margin: 0 auto;
 }
+
+// タブコンテンツの調整
+.site_users_tab_content {
+  width: 100%;
+  padding: 20px 25%;
+  display: flex;
+  justify-content: flex-start;
+  text-decoration: none;
+  border-bottom: solid 1px $select-color;
+  &:hover {
+    background: $select-color;
+  }
+
+  .tab_user_profile_image {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+  }
+
+  .tab_content_names {
+    width: 250px;
+    padding: 20px;
+
+    h2 {
+      color: black;
+    }
+
+    p {
+      color: black;
+      margin-bottom: 0;
+    }
+  }
+
+//追加、削除ボタン関連
+  form {
+    padding-top: 15px;
+    width: 58px;
+  }
+
+  .tab_btn {
+    z-index: 5;
+  }
+
+
+
+  @media screen and (max-width: ($tab)) {
+    position: relative;
+
+    .tab_user_profile_image {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+    }
+
+    .tab_content_names {
+      padding: 15px;
+    }
+
+    form {
+    width: 50px;
+    padding-top: 15px;
+    }
+
+    input {
+      width: 70px;
+      position: absolute;
+      top: 10px;
+      right: 20px;
+
+    }
+  }
+
+  @media screen and (max-width: ($sp)) {
+    display: flex;
+    justify-content: center;
+    padding-left: 10px;
+
+    .tab_img_area {
+      width: 18%;
+    }
+
+    .tab_user_profile_image {
+      width: 80px;
+      height: 80px;
+      margin-top: 7px;
+      border-radius: 50%;
+    }
+
+    .tab_content_names {
+      width: 64%;
+      padding: 15px;
+      font-size: 10px;
+      text-align: left;
+    }
+
+    h2 {
+      font-size: 16px;
+    }
+  }
+}
+

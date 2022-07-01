@@ -46,8 +46,80 @@
 
 
 
+// タブコンテンツの調整
+.site_tab_content {
+  width: 100%;
+  padding: 20px 0;
+  display: flex;
+  justify-content: flex-start;
+  text-decoration: none;
+  border-bottom: solid 1px $select-color;
+  &:hover {
+    background: $select-color;
+  }
 
-//indexページ
-#site_names {
-  padding: 15px 0;
+  .tab_content_names {
+    padding: 20px 30%;
+
+    h2 {
+      color: black;
+    }
+
+    p {
+      color: black;
+      margin-bottom: 0;
+    }
+  }
+
+  @media screen and (max-width: ($tab)) {
+    padding: 0;
+    padding-bottom: 2px;
+    position: relative;
+
+    .tab_user_profile_image {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+    }
+
+    .tab_content_names {
+      padding: 15px;
+      padding-left: 20%;
+    }
+
+  }
+
+  @media screen and (max-width: ($sp)) {
+    display: flex;
+    justify-content: center;
+    padding-left: 10px;
+
+    .tab_img_area {
+      width: 18%;
+    }
+
+    .tab_user_profile_image {
+      width: 80px;
+      height: 80px;
+      margin-top: 7px;
+      border-radius: 50%;
+    }
+
+    .tab_content_names {
+      width: 64%;
+      padding: 15px;
+      font-size: 10px;
+      text-align: left;
+    }
+
+    h2 {
+      font-size: 16px;
+    }
+
+    h6 {
+      font-size : 14px;
+    }
+  }
 }
+
+

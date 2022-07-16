@@ -1,12 +1,12 @@
-# work_site_app
+# Workers
 
 ## サイト概要
 工事現場の予定を記録し共有するサイトです。
 
 ### サイトテーマ
-工事現場の作業内容や予定人数をカレンダーに記録し、それを共有する事ができます。
+工事現場の作業内容や予定人数をカレンダーに記録し、それを共有する事ができます.
 建築工事、土木工事は日々の作業内容や天候によって作業員や警備員の必要人数が変わります。
-work_site_appは手軽に作業内容や予定人数をカレンダーに記録し、共有することにより人的要因での
+Workersは手軽に作業内容や予定人数をカレンダーに記録し、共有することにより人的要因での
 トラブルを減らすことを目的としています。
 
 ### テーマを選んだ理由
@@ -36,5 +36,4 @@ https://docs.google.com/spreadsheets/d/1fIopcjYqARhTuEkyZkiDaO3VblUCnvsgjYq3f_fw
 - JSライブラリ：jQuery
 - IDE：Cloud9
 
-## 使用素材
-
+![Workers](https://user-images.githubusercontent.com/86566390/176180677-4bae5f46-7cc6-4ce6-b5d3-6a5b7a7294a8.jpeg)　

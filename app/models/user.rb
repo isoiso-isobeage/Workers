@@ -77,10 +77,17 @@ class User < ApplicationRecord
     end
   end
 
-
-  def create_notification_work(current_user, site_users, site, work)
+  # 作業作成、更新時の通知レコード作成
+  def create_notification_create_work(current_user, site_users, site, work)
     site_users.each do |user|
       notification = current_user.active_notifications.new(visitor_id: current_user.id, visited_id: user.id, site_id: site.id, work_id: work.id, action: 2)
+      notification.save if notification.valid?
+    end
+  end
+
+  def create_notification_update_work(current_user, site_users, site, work)
+    site_users.each do |user|
+      notification = current_user.active_notifications.new(visitor_id: current_user.id, visited_id: user.id, site_id: site.id, work_id: work.id, action: 3)
       notification.save if notification.valid?
     end
   end

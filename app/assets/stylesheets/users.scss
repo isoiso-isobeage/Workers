@@ -24,6 +24,7 @@
     width: 200px;
     height: 200px;
     border-radius: 50%;
+    object-fit: cover;
   }
 
   .profile_area {
@@ -63,8 +64,8 @@
 
   // iPhon 対応
   @media screen and (max-width: ($sp)) {
-    padding-top: 100px;
-    height: 600px;
+    padding-top: 30px;
+    height: 530px;
     text-align: center;
     display: block;
 

@@ -21,7 +21,7 @@ class WorksController < ApplicationController
     @site_users = @site.users
 
     if !duplicate_company? && @work.save
-      current_user.create_notification_work(current_user, @site_users, @site, @work)
+      current_user.create_notification_create_work(current_user, @site_users, @site, @work)
       redirect_to site_work_path(@site, @work), notice: '予定を作成しました'
     else
       flash.now[:alert] = '予定を作成できませんでした'
@@ -79,9 +79,17 @@ class WorksController < ApplicationController
   def update
     @work = Work.find(params[:id])
     @site = @work.site
+    @site_users = @site.users
+    result = false
     # 現場を作成したユーザーのみ変更可能
     if @site.user_id == current_user.id && @work.work_started?(@work)
-      @work.update(start_date: params[:start_date], end_date: params[:end_date])
+      if @work.update(start_date: params[:start_date], end_date: params[:end_date])
+        result = true
+      end
+    end
+
+    if result
+      current_user.create_notification_update_work(current_user, @site_users, @site, @work)
     end
 
   end
@@ -92,9 +100,17 @@ class WorksController < ApplicationController
     @site = Site.find(@work.site_id)
     @site_users = @site.users
     # 現場を作成したユーザーのみ変更可能
+    result = false
     if @site.user_id == current_user.id && !duplicate_company? && @work.work_started?(@work)
-      @work.update(work_params)
-      current_user.create_notification_work(current_user, @site_users, @site, @work)
+      if @work.update(work_params)
+        result = true
+      end
+    else
+      result = false
+    end
+
+    if result
+      current_user.create_notification_update_work(current_user, @site_users, @site, @work)
       redirect_to site_work_path(@site, @work), notice: '予定を更新しました'
     else
       flash.now[:alert] = '予定を更新できませんでした'
@@ -107,7 +123,7 @@ class WorksController < ApplicationController
     @work = Work.find(params[:id])
     @site = @work.site_id
     @work.destroy
-    redirect_to site_works_path(@site)
+    redirect_to site_works_path(@site), notice: '予定を削除しました'
   end
 
 
@@ -139,6 +155,7 @@ class WorksController < ApplicationController
   def site_users?(site_users, user)
     site_users.include?(user)
   end
+
 
 
 end

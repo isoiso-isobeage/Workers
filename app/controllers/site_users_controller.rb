@@ -28,14 +28,14 @@ class SiteUsersController < ApplicationController
       user = site_user.user
       current_user.create_notification_site_user(current_user, user, site)
     end
-    redirect_to request.referer
+    redirect_to request.referer, notice: '現場に追加しました'
   end
 
 
   def site_user_destroy
     @site = Site.find(params[:site_id])
     SiteUser.find_by(site_id: @site, user_id: params[:user_id]).destroy
-    redirect_to request.referer
+    redirect_to request.referer, notice: '現場から削除しました'
 
   end
 

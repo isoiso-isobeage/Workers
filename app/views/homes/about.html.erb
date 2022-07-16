@@ -1,2 +1,94 @@
-<h1>Homes#about</h1>
-<p>Find me in app/views/homes/about.html.erb</p>
+<div class="about_page">
+  <h1>Workersとは</h1>
+  <p>Workersは工事現場の予定を記録し、共有することができるサービスです。</p>
+
+  <div class="explanation_area">
+
+    <h2>使用方法</h2>
+
+    <h4>1.ユーザー登録が必要です。</h4>
+    <p class="mb-0">以下の画面にてユーザー登録をお願いします。</p>
+    <div class="photo_area">
+      <%=image_tag('sign_up.png', class: "photo") %>
+    </div>
+
+  </div>
+
+  <div class="explanation_area">
+
+    <h4>2.相互フォローで情報共有を可能に。</h4>
+    <div class="photo_area">
+      <%=image_tag('follow.png', class: "photo") %>
+    </div>
+    <p>Workersはユーザーが同士がフォローすることにより情報が共有できるようになります。<br>
+       メールアドレスで特定のユーザーを検索できるようになっています。<br>
+       ご登録していただいた会社名、電話番号、メールアドレスは相互フォローのユーザーのみ表示します。
+    </p>
+
+  </div>
+
+  <div class="explanation_area">
+
+    <h4>3.現場を登録</h4>
+    <div class="photo_area">
+      <%=image_tag('site.png', class: "photo") %>
+    </div>
+    <p>現場作成ページからご自身の現場ページを作成することができます。<br>
+       現場を作成しますと上記画面に切り替わります。<br>
+    </p>
+
+  </div>
+
+  <div class="explanation_area">
+
+    <h4>4.現場にユーザーを追加</h4>
+    <div class="photo_area">
+      <%=image_tag('site_users.png', class: "photo") %>
+    </div>
+    <p>作成した現場にユーザーを追加できます。<br>
+       追加することができるのは相互フォローユーザーのみとなります。<br>
+       追加した場合、通知を相手に送ります。今後予定を作成、編集した際にも通知を送ります。
+    </p>
+
+  </div>
+
+  <div class="explanation_area">
+
+    <h4>5.予定を作成</h4>
+    <div class="photo_area">
+      <%=image_tag('create_work.png', class: "photo") %>
+    </div>
+
+    <div class="photo_area">
+      <%=image_tag('work.png', class: "photo") %>
+    </div>
+
+    <p>作成した現場で予定を作成できます。<br>
+       開始日時が2日前以上の予定は作成できません。
+       作成後はカレンダーに作成した予定が反映されます。<br>
+       予定をクリックすると予定の詳細を確認できます。
+    </p>
+
+  </div>
+
+  <div class="explanation_area">
+
+    <h4>5.予定の編集</h4>
+    <div class="photo_area">
+      <%=image_tag('work_edit.png', class: "photo") %>
+    </div>
+
+    <div class="photo_area">
+      <%=image_tag('dont_update.png', class: "photo") %>
+    </div>
+
+    <p>作成した予定は編集することができます。<br>
+       開始日時が2日以上前の予定は編集することができませんのでご注意ください。<br>
+       日付のみの変更であればカレンダー上でドラッグ&ドロップで編集することができます。
+    </p>
+
+  </div>
+
+</div>
+
+

@@ -1,5 +1,5 @@
 <% join_sites.each do |site| %>
-  <%=link_to site_works_path(site), class: 'tab_content' do%>
+  <%=link_to site_works_path(site), class: 'site_tab_content' do%>
     <div id="site_names" class="tab_content_names">
       <h2><%= site.name %></h2>
       <p><%= site.description %></p>

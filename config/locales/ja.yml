@@ -6,6 +6,22 @@ ja:
       short: "%m/%d %H:%M"
       short1: "%m/%d"
   activerecord:
+
+    attributes:
+      site:
+        name: 現場名
+        description: 現場概要
+      work:
+        name: 作業名
+        content: 作業内容
+        start_date: 開始日時
+        end_date: 終了日時
+      personnel:
+        company_name: 会社名
+        count: 人数
+
+
+
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'

@@ -47,7 +47,6 @@
     </div>
     <p>作成した現場にユーザーを追加できます。<br>
        追加することができるのは相互フォローユーザーのみとなります。<br>
-       追加した場合、通知を相手に送ります。今後予定を作成、編集した際にも通知を送ります。
     </p>
 
   </div>
@@ -91,7 +90,27 @@
 
   <div class="explanation_area">
 
-    <h4>7.メールについて</h4>
+    <h4>7.通知機能について</h4>
+    <div class="photo_area">
+      <%=image_tag('notification1.png', class: "photo") %>
+    </div>
+
+    <div class="photo_area">
+      <%=image_tag('notification2.png', class: "photo") %>
+    </div>
+
+    <p>通知機能であなたに対するアクションをお知らせします。<br>
+       通知は他のユーザーにフォローされた時や現場に自身を追加された時、
+       現場の予定が作成、更新された際に届きます。<br>
+       確認した通知は確認済みとなります。また未確認通知が溜まった際は、右下にある
+       チェックボタンを押していただければ全て確認済みにすることができます。
+    </p>
+
+  </div>
+
+  <div class="explanation_area">
+
+    <h4>8.メールについて</h4>
     <div class="photo_area">
       <%=image_tag('mail.png', class: "photo") %>
     </div>

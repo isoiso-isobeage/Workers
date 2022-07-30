@@ -2,21 +2,26 @@
   <p id="notice"><%= notice %></p>
   <p id="alert"><%= alert %></p>
 </div>
+
+<%=form_with model: @site, url: sites_path, local: true, method: :post do |f| %>
+
 <div class="site_form_page">
   <div class="new_site_content">
     <h2>現場作成</h2>
-    <%=form_with model: Site.new, url: sites_path, local: true, method: :post do |f| %>
+
+    　<%= render 'layouts/errors', obj: f.object %>
+
       <table class="form_items">
         <tr>
           <td class="form_item">
             <%= f.label :name,"現場名(*必須)", class: 'label' %><br>
-            <%= f.text_field :name, placeholder: "現場名を入れてください", autofocus: true, class: 'form_field_long' %>
+            <%= f.text_field :name, placeholder: "現場名を入れてください(2文字以上、30文字以内)", autofocus: true, class: 'form_field_long' %>
           </td>
         </tr>
         <tr>
           <td class="form_item">
             <%= f.label :description,"現場概要(任意)", class: 'label' %><br>
-            <%= f.text_area :description, placeholder: "現場概要を入れてください", autofocus: true, class: 'form_field_big' %>
+            <%= f.text_area :description, placeholder: "現場概要を入れてください(250文字以内)", autofocus: true, class: 'form_field_big' %>
           </td>
         </tr>
         <tr>

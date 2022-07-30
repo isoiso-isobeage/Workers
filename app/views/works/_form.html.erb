@@ -4,13 +4,13 @@
       <td class="form_item">
         <%=f.hidden_field :site_id, :value => site.id %>
         <%= f.label :name,"作業名 (*必須)", class: 'label' %><br>
-        <%= f.text_field :name, placeholder: "現場名を入れてください", autofocus: true, class: 'form_field_long' %>
+        <%= f.text_field :name, placeholder: "作業名を入れてください(25文字以内)", autofocus: true, class: 'form_field_long' %>
       </td>
     </tr>
     <tr>
       <td class="form_item">
         <%= f.label :content,"作業内容  (任意)", class: 'label' %><br>
-        <%= f.text_area :content, placeholder: "作業内容や連絡事項を入れてください", autofocus: true, class: 'form_field_big' %>
+        <%= f.text_area :content, placeholder: "作業内容や連絡事項を入れてください(300文字以内)", autofocus: true, class: 'form_field_big' %>
       </td>
     </tr>
     <tr>
@@ -27,19 +27,21 @@
     </tr>
   </table>
 
-  <div class="personnel_forms">
-    <p>予定人数入力</p>
+  <%unless site_users.blank? %>
+    <div class="personnel_forms">
+      <p>予定人数入力</p>
 
-    <%=f.fields_for :personnels do |personnel| %>
-      <%=render 'personnels', site_users: site_users, f: personnel %>
-    <%end%>
+      <%=f.fields_for :personnels do |personnel| %>
+        <%=render 'personnels', site_users: site_users, f: personnel %>
+      <%end%>
 
-    <div class="append_link">
-        <%=link_to_add_association '追加', f, :personnels, partial: 'works/personnels',
-         render_options: {locals: {site_users: site_users}},
-        class: 'btn btn-success'%>
+      <div class="append_link">
+          <%=link_to_add_association '追加', f, :personnels, partial: 'works/personnels',
+           render_options: {locals: {site_users: site_users}},
+          class: 'btn btn-success'%>
+      </div>
     </div>
-  </div>
+  <%end%>
 
   <div class="work_create_btn">
     <%= f.submit "作成", class: "btn btn-success btn-lg"%>

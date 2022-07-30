@@ -6,6 +6,7 @@
 <div class="work_form_page">
   <div>
     <h2>予定作成</h2>
+    <%= render 'layouts/errors', obj: @work %>
     <%=render 'works/form', work: @work, site: @site, site_users: @site_users %>
   </div>
 </div>

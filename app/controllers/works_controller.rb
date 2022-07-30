@@ -4,6 +4,7 @@ class WorksController < ApplicationController
 
   def new
     @site = Site.find(params[:site_id])
+    @site_nav = true
     if @site.user_id == current_user.id
       @work = Work.new
       @work.personnels.build
@@ -19,6 +20,7 @@ class WorksController < ApplicationController
     @work = Work.new(work_params)
     @site = Site.find(params[:site_id])
     @site_users = @site.users
+    @site_nav = true
 
     if !duplicate_company? && @work.save
       current_user.create_notification_create_work(current_user, @site_users, @site, @work)
@@ -35,6 +37,7 @@ class WorksController < ApplicationController
     @site = Site.find_by(id: params[:site_id])
     @site_users = @site.users
     @works = @site.works
+    @site_nav = true
     if @site.user_id == current_user.id || site_users?(@site_users, current_user)
       render 'index'
     else
@@ -48,6 +51,7 @@ class WorksController < ApplicationController
     @work = Work.find(params[:id])
     @site = @work.site
     @site_users = @site.users
+    @site_nav = true
     if @site.user_id == current_user.id || site_users?(@site_users, current_user)
       @personnels = @work.personnels
       render 'show'
@@ -61,6 +65,7 @@ class WorksController < ApplicationController
   def edit
     @site = Site.find(params[:site_id])
     @work = Work.find(params[:id])
+    @site_nav = true
     if @site.user_id == current_user.id && @work.work_started?(@work)
       @site_users = @site.users
       @work_personnels = @work.personnels
@@ -81,6 +86,7 @@ class WorksController < ApplicationController
     @work = Work.find(params[:id])
     @site = @work.site
     @site_users = @site.users
+    @site_nav = true
     result = false
     # 現場を作成したユーザーのみ変更可能
     if @site.user_id == current_user.id && @work.work_started?(@work)
@@ -101,6 +107,7 @@ class WorksController < ApplicationController
     @work = Work.find(params[:id])
     @site = Site.find(@work.site_id)
     @site_users = @site.users
+    @site_nav = true
     # 現場を作成したユーザーのみ変更可能
     result = false
     if @site.user_id == current_user.id && !duplicate_company? && @work.work_started?(@work)
@@ -123,10 +130,10 @@ class WorksController < ApplicationController
 
 
   def destroy
-    @work = Work.find(params[:id])
-    @site = @work.site_id
-    @work.destroy
-    redirect_to site_works_path(@site), notice: '予定を削除しました'
+    work = Work.find(params[:id])
+    site = work.site_id
+    work.destroy
+    redirect_to site_works_path(site), notice: '予定を削除しました'
   end
 
 

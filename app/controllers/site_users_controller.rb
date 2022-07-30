@@ -5,6 +5,7 @@ class SiteUsersController < ApplicationController
   def index
     @site_user = SiteUser.new
     @site = Site.find(params[:site_id])
+    @site_nav = true
     if @site.user_id == current_user.id
       # 現場に参加しているユーザーを取得
       @site_users = @site.users
@@ -33,8 +34,8 @@ class SiteUsersController < ApplicationController
 
 
   def site_user_destroy
-    @site = Site.find(params[:site_id])
-    SiteUser.find_by(site_id: @site, user_id: params[:user_id]).destroy
+    site = Site.find(params[:site_id])
+    SiteUser.find_by(site_id: site, user_id: params[:user_id]).destroy
     redirect_to request.referer, notice: '現場から削除しました'
 
   end

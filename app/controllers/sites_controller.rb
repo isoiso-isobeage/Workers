@@ -3,6 +3,8 @@ class SitesController < ApplicationController
 
 
   def new
+    @site = Site.new
+    @site_nav = false
   end
 
 
@@ -13,7 +15,6 @@ class SitesController < ApplicationController
     if @site.save
       redirect_to site_works_path(@site), notice: '新規現場を作成しました'
     else
-      @site = nil
       flash.now[:alert] = '作成できませんでした'
       render 'new'
     end
@@ -22,6 +23,7 @@ class SitesController < ApplicationController
 
 
   def index
+    @site_nav = false
     @my_sites = current_user.sites
     @join_sites = current_user.join_sites
   end
@@ -29,6 +31,7 @@ class SitesController < ApplicationController
 
   def edit
     @site = Site.find(params[:id])
+    @site_nav = true
     if @site.user_id == current_user.id
       render 'edit'
     else
@@ -39,6 +42,7 @@ class SitesController < ApplicationController
 
   def update
     @site = Site.find(params[:id])
+    @site_nav = true
     if @site.update(site_params)
       redirect_to site_works_path(@site), notice: '更新しました'
     else
@@ -49,8 +53,8 @@ class SitesController < ApplicationController
 
 
   def destroy
-    @site = Site.find(params[:id])
-    @site.destroy
+    site = Site.find(params[:id])
+    site.destroy
     redirect_to sites_path, notice: '削除しました'
   end
 

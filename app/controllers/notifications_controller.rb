@@ -10,17 +10,17 @@ class NotificationsController < ApplicationController
 
 # 新規通知を確認済みにする
   def update
-    if @notification = Notification.find_by(id: params[:id])
+    if notification = Notification.find_by(id: params[:id])
 
-      @notification.update(checked: true)
+      notification.update(checked: true)
 
       # 選択した通知によって画面遷移先を変更
-      if @notification.action == 'follow'
-        redirect_to user_path(@notification.visitor)
-      elsif @notification.action == 'site_user'
-        redirect_to site_works_path(@notification.site)
+      if notification.action == 'follow'
+        redirect_to user_path(notification.visitor)
+      elsif notification.action == 'site_user'
+        redirect_to site_works_path(notification.site)
       else
-        redirect_to site_work_path(@notification.site, @notification.work)
+        redirect_to site_work_path(notification.site, notification.work)
       end
 
     else

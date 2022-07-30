@@ -1,8 +1,10 @@
-<%= render 'layouts/errors', obj: @site %>
 <div class="site_form_page">
   <div class="new_site_content">
     <h2>現場編集</h2>
+
+    <%= render 'layouts/errors', obj: @site %>
     <%=form_with model: @site, url: site_path, local: true, method: :patch do |f| %>
+
       <table class="form_items">
         <tr>
           <td class="form_item">
@@ -17,10 +19,12 @@
           </td>
         </tr>
       </table>
+
       <div class="edit_site_btn">
         <%= f.submit "変更", class: "btn btn-success"%>
         <%=link_to '現場削除', site_path(@site), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-danger" %>
       </div>
+
     <%end%>
   </div>
 </div>

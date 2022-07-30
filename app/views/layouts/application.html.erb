@@ -19,6 +19,12 @@
 
     <%= render 'layouts/header' %>
     <main id="main">
+
+      <div class="flash_message">
+        <p id="notice"><%= notice %></p>
+        <p id="alert"><%= alert %></p>
+      </div>
+
       <%= yield %>
     </main>
     <!--ハンバーガーメニュー読み込み-->

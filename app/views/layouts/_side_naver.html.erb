@@ -1,7 +1,7 @@
 <div id="nav_fix">
   <ul class="main_nav">
     <!--現場関連のナビゲーション-->
-    <%if user_signed_in? && !@site.blank?%>
+    <%if user_signed_in? && @site_nav %>
       <%= render 'layouts/site_header', site: @site %>
     <!--ログイン時のナビゲーション-->
     <%elsif user_signed_in?%>

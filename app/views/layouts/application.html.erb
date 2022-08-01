@@ -18,6 +18,7 @@
   <body id="body">
 
     <%= render 'layouts/header' %>
+
     <main id="main">
 
       <div class="flash_message">
@@ -26,7 +27,9 @@
       </div>
 
       <%= yield %>
+
     </main>
+
     <!--ハンバーガーメニュー読み込み-->
     <%= javascript_pack_tag 'hamburger' %>
   </body>

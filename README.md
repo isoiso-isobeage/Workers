@@ -1,5 +1,8 @@
 # Workers
 
+# サイトイメージ
+![Workers](https://user-images.githubusercontent.com/86566390/176180677-4bae5f46-7cc6-4ce6-b5d3-6a5b7a7294a8.jpeg)　
+
 ## サイト概要
 工事現場の予定を記録し共有するサイトです。
 
@@ -36,4 +39,4 @@ https://docs.google.com/spreadsheets/d/1fIopcjYqARhTuEkyZkiDaO3VblUCnvsgjYq3f_fw
 - JSライブラリ：jQuery FullCalendar
 - IDE：Cloud9
 
-![Workers](https://user-images.githubusercontent.com/86566390/176180677-4bae5f46-7cc6-4ce6-b5d3-6a5b7a7294a8.jpeg)　
+

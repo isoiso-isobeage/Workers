@@ -29,9 +29,9 @@ class User < ApplicationRecord
 
   # 通知関連
 
-  # 通知を送った
+  # 送った通知
   has_many :active_notifications, class_name: 'Notification', foreign_key: 'visitor_id', dependent: :destroy
-  # 通知が送られた
+  # 送られた通知
   has_many :passive_notifications, class_name: 'Notification', foreign_key: 'visited_id', dependent: :destroy
 
 
@@ -60,7 +60,9 @@ class User < ApplicationRecord
 
   # フォロー時の通知レコード作成
   def create_notification_follow(current_user, user)
+    # 何度も通知が行かないようにする為にif文で確認
     follow = Notification.where(visitor_id: current_user.id, visited_id: user.id, action: 0, checked: false)
+
     if follow.blank?
       notification = current_user.active_notifications.new(visitor_id: current_user.id, visited_id: user.id, action: 0)
       notification.save if notification.valid?
@@ -70,6 +72,7 @@ class User < ApplicationRecord
 
   # 現場ユーザー追加時の通知レコード作成
   def create_notification_site_user(current_user, user, site)
+    # 何度も通知が行かないようにする為にif文で確認
     site_user = Notification.where(visitor_id: current_user.id, visited_id: user.id, site_id: site.id, action: 1, checked: false)
     if site_user.blank?
       notification = current_user.active_notifications.new(visitor_id: current_user.id, visited_id: user.id, site_id: site.id, action: 1)
@@ -77,7 +80,7 @@ class User < ApplicationRecord
     end
   end
 
-  # 作業作成、更新時の通知レコード作成
+  # 作業作成時の通知レコード作成
   def create_notification_create_work(current_user, site_users, site, work)
     site_users.each do |user|
       notification = current_user.active_notifications.new(visitor_id: current_user.id, visited_id: user.id, site_id: site.id, work_id: work.id, action: 2)
@@ -85,9 +88,17 @@ class User < ApplicationRecord
     end
   end
 
+  # 作業更新時の通知レコード作成
   def create_notification_update_work(current_user, site_users, site, work)
     site_users.each do |user|
       notification = current_user.active_notifications.new(visitor_id: current_user.id, visited_id: user.id, site_id: site.id, work_id: work.id, action: 3)
+      notification.save if notification.valid?
+    end
+  end
+
+  def create_notification_cansel_work(current_user, site_users, site, work)
+    site_users.each do |user|
+      notification = current_user.active_notifications.new(visitor_id: current_user.id, visited_id: user.id, site_id: site.id, work_id: work.id, action: 4)
       notification.save if notification.valid?
     end
   end

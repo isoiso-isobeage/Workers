@@ -44,27 +44,44 @@
 
     <%end%>
 
-    <%when 'update_work'%>
+  <%when 'update_work'%>
 
-      <%=link_to notification_path(notification), method: :patch, class: 'notification_tab_content' do %>
-        <div>
-          <%=image_tag notification.visitor.get_profile_image, class: 'tab_user_profile_image' %>
-        </div>
+    <%=link_to notification_path(notification), method: :patch, class: 'notification_tab_content' do %>
+      <div>
+        <%=image_tag notification.visitor.get_profile_image, class: 'tab_user_profile_image' %>
+      </div>
 
-        <div class="tab_content_names">
-          <p>現場名</p>
-          <p><%=notification.site.name%></p>
-          <p><%=l notification.work.start_date, format: :short%>開始予定</p>
-          <h6><%=notification.work.name %>の予定が更新されました。</h6>
-        </div>
+      <div class="tab_content_names">
+        <p>現場名</p>
+        <p><%=notification.site.name%></p>
+        <p><%=l notification.work.start_date, format: :short%>開始予定</p>
+        <h6><%=notification.work.name %>の予定が更新されました。</h6>
+      </div>
 
-      <%end%>
+    <%end%>
+
+  <%when 'cancel_work'%>
+
+    <%=link_to notification_path(notification), method: :patch, class: 'notification_tab_content' do %>
+      <div>
+        <%=image_tag notification.visitor.get_profile_image, class: 'tab_user_profile_image' %>
+      </div>
+
+      <div class="tab_content_names">
+        <p>現場名</p>
+        <p><%=notification.site.name%></p>
+        <p><%=l notification.work.start_date, format: :short%>開始予定</p>
+        <h6><%=notification.work.name %>は中止になりました。</h6>
+      </div>
+
+    <%end%>
 
   <%end%>
 
 <%end%>
 
 
+<!--通知がない場合の表示-->
 <%if checked_notifications.blank?%>
   <h2 class="no_notification_message"><i class="fa-solid fa-bell"></i>通知はありません</h2>
 <%end%>

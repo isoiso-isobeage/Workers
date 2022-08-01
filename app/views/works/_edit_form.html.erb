@@ -43,7 +43,7 @@
 
   <div class="work_create_btn">
     <%= f.submit "更新", class: "btn btn-success btn-lg"%>
-    <%=link_to "削除", site_work_path, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-danger btn-lg"%>
+    <%=link_to "中止", site_work_path, method: :delete, data: { confirm: '作業予定を中止にしますか？' }, class: "btn btn-danger btn-lg"%>
   </div>
 
 <%end%>

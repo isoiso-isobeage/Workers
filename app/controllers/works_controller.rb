@@ -23,8 +23,9 @@ class WorksController < ApplicationController
     @site_nav = true
 
     if !duplicate_company? && @work.save
+       # 通知、メールを送信
       current_user.create_notification_create_work(current_user, @site_users, @site, @work)
-      SiteMailer.send_notifications_to_site_user(@site)
+      SiteMailer.send_update_work_to_site_user(@site)
       redirect_to site_work_path(@site, @work), notice: '予定を作成しました'
     else
       flash.now[:alert] = '予定を作成できませんでした'
@@ -36,7 +37,7 @@ class WorksController < ApplicationController
   def index
     @site = Site.find_by(id: params[:site_id])
     @site_users = @site.users
-    @works = @site.works
+    @works = Work.where(site_id: @site.id, work_status: true)
     @site_nav = true
     if @site.user_id == current_user.id || site_users?(@site_users, current_user)
       render 'index'
@@ -66,7 +67,8 @@ class WorksController < ApplicationController
     @site = Site.find(params[:site_id])
     @work = Work.find(params[:id])
     @site_nav = true
-    if @site.user_id == current_user.id && @work.work_started?(@work)
+
+    if @site.user_id == current_user.id && @work.work_started?(@work) && @work.work_status
       @site_users = @site.users
       @work_personnels = @work.personnels
 
@@ -96,8 +98,9 @@ class WorksController < ApplicationController
     end
 
     if result
+      # 通知、メールを送信
       current_user.create_notification_update_work(current_user, @site_users, @site, @work)
-      SiteMailer.send_notifications_to_site_user(@site)
+      SiteMailer.send_update_work_to_site_user(@site)
     end
 
   end
@@ -119,8 +122,9 @@ class WorksController < ApplicationController
     end
 
     if result
+       # 通知、メールを送信
       current_user.create_notification_update_work(current_user, @site_users, @site, @work)
-      SiteMailer.send_notifications_to_site_user(@site)
+      SiteMailer.send_update_work_to_site_user(@site)
       redirect_to site_work_path(@site, @work), notice: '予定を更新しました'
     else
       flash.now[:alert] = '予定を更新できませんでした'
@@ -131,9 +135,16 @@ class WorksController < ApplicationController
 
   def destroy
     work = Work.find(params[:id])
-    site = work.site_id
-    work.destroy
-    redirect_to site_works_path(site), notice: '予定を削除しました'
+    site = work.site
+    site_users = site.users
+
+    work.work_status = false
+    work.save
+
+     # 通知、メールを送信
+    current_user.create_notification_cansel_work(current_user, site_users, site, work)
+    SiteMailer.send_cansel_work_to_site_user(site, work)
+    redirect_to site_works_path(site), notice: '予定を中止にしました'
   end
 
 

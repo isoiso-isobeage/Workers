@@ -1,4 +1,5 @@
 <div class="work_show_page">
+
   <h2><%=@work.name %></h2>
 
   <%unless @work.content.blank?%>
@@ -10,9 +11,9 @@
 
   <div class="time_area">
     <h5>日時</h5>
-    <p><%=l @work.start_date, format: :short%>
+    <p><%=l @work.start_date, format: :long%>
     <span>~</span>
-    <%=l @work.end_date, format: :short%></p>
+    <%=l @work.end_date, format: :long%></p>
   </div>
 
   <%if @personnels.blank?%>
@@ -33,12 +34,19 @@
       </tbody>
     </table>
   <%end%>
-  <%if @site.user_id == current_user.id && @work.work_started?(@work)%>
+
+  <!--編集先リンク-->
+  <%if @site.user_id == current_user.id && @work.work_started?(@work) && @work.work_status%>
     <div>
       <%=link_to '作業内容を編集', edit_site_work_path(@site, @work), id: "edit_link"%>
     </div>
   <%elsif @site.user_id == current_user.id%>
     <h4 class="not_edit_message"><i class="fa-solid fa-lock"></i>編集できません</h4>
+  <%end%>
+
+  <!--作業が中止の場合-->
+  <%unless @work.work_status%>
+    <h4 class="not_edit_message">この作業は中止になりました</h4>
   <%end%>
 
 </div>

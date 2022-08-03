@@ -32,6 +32,10 @@ https://app.diagrams.net/#G1f1lGkR5qf7fPxy29uSyyuihOT0ix4TKv
 
 https://docs.google.com/spreadsheets/d/1fIopcjYqARhTuEkyZkiDaO3VblUCnvsgjYq3f_fwrQw/edit#gid=287770824
 
+実装機能リスト
+
+https://docs.google.com/spreadsheets/d/1XzaGs1y9kF-7fr667w5iQeVzO_Yw2DlvZIeOi-aghC8/edit#gid=375590402
+
 ## 開発環境
 - OS：Linux(CentOS)
 - 言語：HTML,CSS,JavaScript,Ruby,SQL

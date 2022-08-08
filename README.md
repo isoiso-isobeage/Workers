@@ -2,6 +2,9 @@
 
 # イメージ
 ![Workers](https://user-images.githubusercontent.com/86566390/176180677-4bae5f46-7cc6-4ce6-b5d3-6a5b7a7294a8.jpeg)　
+![スクリーンショット 2022-08-08 16 30 54](https://user-images.githubusercontent.com/86566390/183363905-c923f4b4-04cd-43a2-9e4e-ea6737255306.png)
+![スクリーンショット 2022-08-08 16 29 22](https://user-images.githubusercontent.com/86566390/183363929-ad06bb35-c11d-4a1e-a045-5ba2934a4ae9.png)
+
 
 ## サイト概要
 工事現場の予定を記録し共有するサイトです。
